@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PSPlaywright.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '0.1.0'
     GUID              = '0912bb76-1d95-4fe6-9513-37ac18e1b6ea'
     Author            = 'Adam Driscoll'
     CompanyName       = ''
