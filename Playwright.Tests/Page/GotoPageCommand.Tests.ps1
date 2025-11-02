@@ -9,7 +9,7 @@ Describe 'Open-PlaywrightPageUrl' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Url and load test file' {
-            Ensure-TestHttpServer | Out-Null
+            Start-TestHttpServerInstance | Out-Null
             $testFileName = New-BasicTestHtmlPage -FileName 'GotoPageTest.html' -Title 'Goto Test' -Body '<div id="test">Hello Playwright!</div>'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
             $pageUrl = Get-TestHtmlPageUrl -FileName $testFileName

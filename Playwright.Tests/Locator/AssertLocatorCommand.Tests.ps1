@@ -13,7 +13,7 @@ Describe 'Assert-PlaywrightLocator' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Locator' {
-            Ensure-TestHttpServer | Out-Null
+            Start-TestHttpServerInstance | Out-Null
             $pageUrl = Get-TestHtmlPageUrl -FileName $TestPagePath
             $page = Open-PlaywrightPage -Browser $browser -Url $pageUrl
             $locator = $page.Locator('#main')

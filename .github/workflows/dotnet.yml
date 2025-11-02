@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -20,6 +20,11 @@ jobs:
       run: dotnet restore ./PSPlaywright/psplaywright.csproj
     - name: Build
       run: dotnet publish ./PSPlaywright/psplaywright.csproj --no-restore --configuration Release
+    - name: Start HTTP Server
+      uses: jakejarvis/http-server-action@v1
+      with:
+        directory: ./Playwright.Tests/TestPages
+        port: 9999
     - name: Run Pester Tests
       shell: pwsh
       run: |

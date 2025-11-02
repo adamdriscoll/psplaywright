@@ -6,11 +6,22 @@ function Start-TestHttpServer {
         [hashtable]$DefaultHeaders = @{}
     )
 
+    $isGithubActions = $env:GITHUB_ACTIONS -eq 'true'
+    if ($isGithubActions) {
+        # Skip starting server in GitHub Actions
+        return [PSCustomObject]@{
+            Port = $Port
+            RootFolder = $RootFolder
+            JobId = $null
+            Listener = $null
+            Skipped = $true
+        }
+    }
+    # ...existing code...
     $listener = [System.Net.HttpListener]::new()
     $listener.Prefixes.Add("http://localhost:$Port/")
     $listener.Start()
 
-    # Use Start-ThreadJob for .NET object sharing (requires ThreadJob module)
     if (-not (Get-Module -ListAvailable -Name ThreadJob)) {
         Import-Module ThreadJob -ErrorAction SilentlyContinue
     }
@@ -64,6 +75,7 @@ function Start-TestHttpServer {
         RootFolder = $RootFolder
         JobId = $job.Id
         Listener = $listener
+        Skipped = $false
     }
 }
 
@@ -72,6 +84,12 @@ function Stop-TestHttpServer {
         [Parameter(Mandatory)]
         [object]$ServerInfo
     )
+    $isGithubActions = $env:GITHUB_ACTIONS -eq 'true'
+    if ($isGithubActions -or $ServerInfo.Skipped) {
+        # Skip stopping server in GitHub Actions or if server was not started
+        return
+    }
+    # ...existing code...
     $ServerInfo.Listener.Stop()
     $job = Get-Job -Id $ServerInfo.JobId
     if ($job) {

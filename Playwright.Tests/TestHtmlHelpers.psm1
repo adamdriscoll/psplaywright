@@ -51,7 +51,7 @@ function Get-TestHtmlPageUrl {
     return "http://localhost:$Port/$FileName"
 }
 
-function Ensure-TestHttpServer {
+function Start-TestHttpServerInstance {
     param(
         [int]$Port = 9999
     )

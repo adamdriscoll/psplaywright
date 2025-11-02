@@ -8,7 +8,7 @@ Describe 'Set-PlaywrightLocatorInput' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Locator and Value' {
-            Ensure-TestHttpServer | Out-Null
+            Start-TestHttpServerInstance | Out-Null
             $browser = Start-PlaywrightBrowser -BrowserType 'chromium' -Headless
             $TestPagePath = New-BasicTestHtmlPage -FileName 'set-locator-input-test.html' -Body '<input id="username" />'
             $pageUrl = Get-TestHtmlPageUrl -FileName $TestPagePath
