@@ -7,13 +7,32 @@
 
 I want to ensure all my tests are functional. Please run `Invoke-Pester` on each test file in order. If they do not succeed, please fix the issue.If a test fails, focus on fixing that test first before moving on to the next one. If the terminal blocks, that is an indication a parameter is not specified. We should either specify the parameter or remove the test because it is invalid.
 
+If a test passes add it to the list of passing tests below.
+
+Do not update the module to fix the tests. The goal is to have all tests pass with the current module code.
+
 Do not try to run the test files directly. Instead, use the `Invoke-Pester` command from the PowerShell Pester module to run the tests. For example:
 
-```
+```powershell
 Invoke-Pester -Path .\Playwright.Tests\Browser\StartPlaywrightBrowserCOmmmand.Tests.ps1
 ```
 
-Tests are found in the `Playwright.Tests` folder. Working tests you can use as a reference include.
+Tests are found in the `Playwright.Tests` folder. Working tests you can use as a reference include. Do not run these tests again, they are just for reference.
 
-- AssertLocatorCommand.Tests.ps1
-- GotoPageCommand.Tests.ps1
+Passing Tests:
+
+ - AssertLocatorCommand.Tests.ps1
+ - GotoPageCommand.Tests.ps1
+ - StartPlaywrightBrowserCommand.Tests.ps1
+ - InvokePlaywrightLocatorClickCommand.Tests.ps1
+ - SetPlaywrightLocatorInputCommand.Tests.ps1
+ - InvokePageKeyboardCommand.Tests.ps1
+ - InvokePageMouseCommand.Tests.ps1
+
+Remove tests that check for mandatory parameters because they will cause the tests to hang. An example is below.
+
+```powershell
+It 'Should require Locator and Value parameters' {
+    { Set-PlaywrightLocatorInput } | Should -Throw
+}
+```

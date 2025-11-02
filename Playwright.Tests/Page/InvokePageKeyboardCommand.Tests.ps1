@@ -18,7 +18,7 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
             $page.Locator('#input').ClickAsync().GetAwaiter().GetResult()
             # Type text
             Invoke-PlaywrightPageKeyboard -Page $page -Text 'Hello World'
-            $value = $page.EvaluateAsync('() => document.getElementById("input").value').GetAwaiter().GetResult()
+            $value = Invoke-PlaywrightPageJavascript -Page $page -Expression 'document.getElementById("input").value'
             $value | Should -Be 'Hello World'
         }
         It 'Should press, down, up, and insert text using keyboard' {
@@ -28,7 +28,7 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
             $page.Locator('#input2').ClickAsync().GetAwaiter().GetResult()
             # Insert text
             Invoke-PlaywrightPageKeyboard -Page $page -InsertText 'abc'
-            $value = $page.EvaluateAsync('() => document.getElementById("input2").value').GetAwaiter().GetResult()
+            $value = Invoke-PlaywrightPageJavascript -Page $page -Expression 'document.getElementById("input2").value'
             $value | Should -Be 'abc'
             # Press key
             Invoke-PlaywrightPageKeyboard -Page $page -Key 'A'
@@ -36,8 +36,8 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
             Invoke-PlaywrightPageKeyboard -Page $page -DownKey 'Shift'
             Invoke-PlaywrightPageKeyboard -Page $page -UpKey 'Shift'
             # Validate input still present
-            $value2 = $page.EvaluateAsync('() => document.getElementById("input2").value').GetAwaiter().GetResult()
-            $value2 | Should -Be 'abc'
+            $value2 = Invoke-PlaywrightPageJavascript -Page $page -Expression 'document.getElementById("input2").value'
+            $value2 | Should -Be 'abcA'
         }
     }
 }
