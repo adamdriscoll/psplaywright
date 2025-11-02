@@ -1,8 +1,7 @@
 Describe 'Start-PlaywrightBrowser' {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
-    Start-Playwright
+        Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
     }
     AfterAll {
         Stop-Playwright

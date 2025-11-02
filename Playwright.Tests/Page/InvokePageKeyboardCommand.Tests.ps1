@@ -1,19 +1,43 @@
-# Basic test for InvokePageKeyboardCommand
-Describe "InvokePageKeyboardCommand" {
+
+Describe 'Invoke-PlaywrightPageKeyboard' {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Import-Module "$PSScriptRoot\..\..\PSPlaywright\bin\Release\netstandard2.0\publish\PSPlaywright.psd1"
+        Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {
         Stop-Playwright
+        Remove-TestHtmlPagesFolder
     }
-    It "Should invoke keyboard actions on page" {
-    $browser = Start-PlaywrightBrowser
-    $page = Open-PlaywrightPage -Browser $browser
-    Set-PlaywrightPageContent -Html "<html><body><input id='input' /></body></html>" -Page $page
-    Invoke-PlaywrightPageKeyboard -Page $page -Action "Type" -Text "Hello"
-    $value = $page.EvaluateAsync("() => document.getElementById('input').value").GetAwaiter().GetResult()
-    $value | Should -Be "Hello"
-    Stop-PlaywrightBrowser -Browser $browser
+    Context 'Keyboard Actions' {
+        It 'Should type text into input using keyboard' {
+            $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest.html' -Title 'Keyboard Test' -Body '<input id="input" />'
+            Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
+            $page = Open-PlaywrightPage -Url $testFilePath
+            # Focus the input
+            $page.Locator('#input').ClickAsync().GetAwaiter().GetResult()
+            # Type text
+            Invoke-PlaywrightPageKeyboard -Page $page -Text 'Hello World'
+            $value = $page.EvaluateAsync('() => document.getElementById("input").value').GetAwaiter().GetResult()
+            $value | Should -Be 'Hello World'
+        }
+        It 'Should press, down, up, and insert text using keyboard' {
+            $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest2.html' -Title 'Keyboard Test 2' -Body '<input id="input2" />'
+            Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
+            $page = Open-PlaywrightPage -Url $testFilePath
+            $page.Locator('#input2').ClickAsync().GetAwaiter().GetResult()
+            # Insert text
+            Invoke-PlaywrightPageKeyboard -Page $page -InsertText 'abc'
+            $value = $page.EvaluateAsync('() => document.getElementById("input2").value').GetAwaiter().GetResult()
+            $value | Should -Be 'abc'
+            # Press key
+            Invoke-PlaywrightPageKeyboard -Page $page -Key 'A'
+            # Down and Up key
+            Invoke-PlaywrightPageKeyboard -Page $page -DownKey 'Shift'
+            Invoke-PlaywrightPageKeyboard -Page $page -UpKey 'Shift'
+            # Validate input still present
+            $value2 = $page.EvaluateAsync('() => document.getElementById("input2").value').GetAwaiter().GetResult()
+            $value2 | Should -Be 'abc'
+        }
     }
 }

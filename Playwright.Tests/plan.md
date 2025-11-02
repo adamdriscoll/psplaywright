@@ -1,0 +1,1 @@
+I want to ensure all my tests are functional. Please run `Invoke-Pester` on each test file in order. If they do not succeed, please fix the issue. If the terminal blocks, that is an indication a parameter is not specified. We should either specify the parameter or remove the test because it is invalid.

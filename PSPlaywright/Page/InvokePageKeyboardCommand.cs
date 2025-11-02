@@ -3,7 +3,7 @@ using Microsoft.Playwright;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "PageKeyboard", DefaultParameterSetName = "Type")]
+    [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPageKeyboard", DefaultParameterSetName = "Type")]
     public class InvokePageKeyboardCommand : PageCommandBase
     {
         [Parameter(ParameterSetName = "Type", Mandatory = true)]

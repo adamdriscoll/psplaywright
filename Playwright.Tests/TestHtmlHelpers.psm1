@@ -1,4 +1,4 @@
-
+Import-Module "$PSScriptRoot\..\PSPlaywright\bin\Release\netstandard2.0\publish\PSPlaywright.psd1" -Global
 
 function New-TestHtmlFile {
     [CmdletBinding()]
