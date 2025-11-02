@@ -10,7 +10,7 @@ Describe "RouteFromHARPageCommand" {
     It "Should route from HAR file" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser
-    $harPath = "./test.har"
+    $harPath = (Join-Path (Get-Location) 'test.har')
     # Assume HAR file exists for test
     Invoke-PlaywrightPageRequest -Page $page -HarPath $harPath
     # Check for successful execution (no error thrown)

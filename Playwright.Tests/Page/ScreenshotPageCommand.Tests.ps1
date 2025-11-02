@@ -11,7 +11,7 @@ Describe 'Get-PlaywrightPageScreenshot' {
             $browser = Start-PlaywrightBrowser -Headless
             $page = Open-PlaywrightPage -Browser $browser
             Set-PlaywrightPageContent -Html '<html><body><h1>Screenshot Test</h1></body></html>' -Page $page
-            $screenshotPath = 'C:\temp\screenshot.png'
+            $screenshotPath = (Join-Path (Get-Location) 'temp/screenshot.png')
             $null = $page | Get-PlaywrightPageScreenshot -Path $screenshotPath
             Test-Path $screenshotPath | Should -Be $true
             Remove-Item $screenshotPath -ErrorAction SilentlyContinue

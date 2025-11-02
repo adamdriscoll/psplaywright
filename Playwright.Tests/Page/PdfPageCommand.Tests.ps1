@@ -11,7 +11,7 @@ Describe "PdfPageCommand" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser
     Set-PlaywrightPageContent -Html "<html><body><h1>PDF Test</h1></body></html>" -Page $page
-    $pdfPath = "./test.pdf"
+    $pdfPath = (Join-Path (Get-Location) 'test.pdf')
     Get-PlaywrightPagePdf -Page $page -Path $pdfPath
     Test-Path $pdfPath | Should -Be $true
     Remove-Item $pdfPath

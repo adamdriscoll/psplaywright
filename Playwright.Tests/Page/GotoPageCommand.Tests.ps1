@@ -14,7 +14,7 @@ Describe 'Open-PlaywrightPageUrl' {
             # Start a new browser instance
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
             # Open the test file in the browser
-            $result = Open-PlaywrightPage -Url $testFilePath
+            $result = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
             $result | Should -Not -BeNullOrEmpty
             # Optionally, validate page content
             Assert-PlaywrightLocator -Locator ($result.Locator('#test')) -HasText 'Hello Playwright!'

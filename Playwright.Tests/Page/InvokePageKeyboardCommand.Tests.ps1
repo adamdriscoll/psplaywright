@@ -13,7 +13,7 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
         It 'Should type text into input using keyboard' {
             $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest.html' -Title 'Keyboard Test' -Body '<input id="input" />'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            $page = Open-PlaywrightPage -Url $testFilePath
+            $page = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
             # Focus the input
             $page.Locator('#input').ClickAsync().GetAwaiter().GetResult()
             # Type text
@@ -24,7 +24,7 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
         It 'Should press, down, up, and insert text using keyboard' {
             $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest2.html' -Title 'Keyboard Test 2' -Body '<input id="input2" />'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            $page = Open-PlaywrightPage -Url $testFilePath
+            $page = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
             $page.Locator('#input2').ClickAsync().GetAwaiter().GetResult()
             # Insert text
             Invoke-PlaywrightPageKeyboard -Page $page -InsertText 'abc'
