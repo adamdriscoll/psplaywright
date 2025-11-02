@@ -17,6 +17,6 @@ jobs:
       with:
         dotnet-version: '9.0.x'
     - name: Restore dependencies
-      run: dotnet restore ./PSPlaywright/PSPlaywright.csproj
+      run: dotnet restore ./PSPlaywright/psplaywright.csproj
     - name: Build
-      run: dotnet build ./PSPlaywright/PSPlaywright.csproj --no-restore --configuration Release
+      run: dotnet build ./PSPlaywright/psplaywright.csproj --no-restore --configuration Release
