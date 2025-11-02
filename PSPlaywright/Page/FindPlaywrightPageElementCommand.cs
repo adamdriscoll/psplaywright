@@ -5,7 +5,7 @@ using psplaywright;
 namespace PSPlaywright.Page
 {
     [Cmdlet(VerbsCommon.Find, "PlaywrightPageElement", DefaultParameterSetName = "ByAltText")]
-    [OutputType(typeof(IElementHandle))]
+    [OutputType(typeof(ILocator))]
     public class FindPlaywrightPageElementCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, ParameterSetName = "ByAltText")]
@@ -82,8 +82,24 @@ namespace PSPlaywright.Page
 
             if (locator != null)
             {
-                var element = locator.ElementHandleAsync().GetAwaiter().GetResult();
-                WriteObject(element);
+                // Gather locator info similar to GetPlaywrightLocatorInfoCommand
+                var pso = new PSObject();
+                pso.Properties.Add(new PSNoteProperty("Locator", locator));
+                try { pso.Properties.Add(new PSNoteProperty("IsChecked", locator.IsCheckedAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("IsDisabled", locator.IsDisabledAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("IsEditable", locator.IsEditableAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("IsEnabled", locator.IsEnabledAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("IsHidden", locator.IsHiddenAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("IsVisible", locator.IsVisibleAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("Count", locator.CountAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("InnerHTML", locator.InnerHTMLAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("InnerText", locator.InnerTextAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("TextContent", locator.TextContentAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("InputValue", locator.InputValueAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("AllInnerTexts", locator.AllInnerTextsAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("AllTextContents", locator.AllTextContentsAsync().GetAwaiter().GetResult())); } catch { }
+                try { pso.Properties.Add(new PSNoteProperty("BoundingBox", locator.BoundingBoxAsync().GetAwaiter().GetResult())); } catch { }
+                WriteObject(pso);
             }
         }
     }
