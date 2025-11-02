@@ -4,27 +4,33 @@ using psplaywright;
 
 namespace PSPlaywright.Page
 {
-    [Cmdlet(VerbsCommon.Get, "PlaywrightPageLocator", DefaultParameterSetName = "ByAltText")]
+    [Cmdlet(VerbsCommon.Find, "PlaywrightPageElement", DefaultParameterSetName = "ByAltText")]
     [OutputType(typeof(IElementHandle))]
-    public class GetPageLocatorCommand : PageCommandBase
+    public class FindPlaywrightPageElementCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, ParameterSetName = "ByAltText")]
-    public string? AltText { get; set; }
+        public string? AltText { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "ByLabel")]
-    public string? Label { get; set; }
+        public string? Label { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "ByRole")]
-    public string? Role { get; set; }
+        public string? Role { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "ByTestId")]
-    public string? TestId { get; set; }
+        public string? TestId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "ByText")]
-    public string? Text { get; set; }
+        public string? Text { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "ByTitle")]
-    public string? Title { get; set; }
+        public string? Title { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = "BySelector")]
+        public string? Selector { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = "BySelector")]
+        public PageLocatorOptions? LocatorOptions { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -65,6 +71,12 @@ namespace PSPlaywright.Page
                 case "ByTitle":
                     if (!string.IsNullOrEmpty(Title))
                         locator = Page.GetByTitle(Title);
+                    break;
+                case "BySelector":
+                    if (!string.IsNullOrEmpty(Selector))
+                    {
+                        locator = LocatorOptions != null ? Page.Locator(Selector, LocatorOptions) : Page.Locator(Selector);
+                    }
                     break;
             }
 

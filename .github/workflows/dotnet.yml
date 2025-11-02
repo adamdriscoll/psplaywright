@@ -28,7 +28,6 @@ jobs:
     - name: Run Pester Tests
       shell: pwsh
       run: |
-        Install-Module -Name Pester -Force -SkipPublisherCheck
         Import-Module ./PSPlaywright/bin/Release/netstandard2.0/publish/PSPlaywright.psd1
         Install-Playwright
         Invoke-Pester -Path ./Playwright.Tests -Output Detailed
