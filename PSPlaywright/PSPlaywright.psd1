@@ -41,14 +41,12 @@
         'Reset-PlaywrightPage',
         'Remove-PlaywrightPageLocatorHandler',
         'Invoke-PlaywrightPageGarageCollection',
-        'Register-PlaywrightPageRouteHandler',
         'Invoke-PlaywrightPageRequest',
         'Invoke-PlaywrightPageRunAndWaitForEvent',
         'Get-PlaywrightPageScreenshot',
         'Set-PlaywrightPageContent',
         'Set-PlaywrightPageViewportSize',
         'Get-PlaywrightPageTitle',
-        'Unregister-PlaywrightPageRoute',
         'Wait-PlaywrightPageEvent'
     )
     PrivateData       = @{
