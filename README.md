@@ -34,7 +34,7 @@ The following Page cmdlets are available:
 - `Enter-PlaywrightPage` - Enter the page context
 - `Get-PlaywrightPageJavascriptHandle` - Evaluate JavaScript and get a handle
 - `Exit-PlaywrightPage` - Exit the page context
-- `Get-PlaywrightPageElement` - Get an element from the page
+- `Get-PlaywrightPageLocator` - Get a locator from the page
 - `Open-PlaywrightPageUrl` - Navigate to a URL
 - `Invoke-PlaywrightPageJavascript` - Invoke JavaScript on the page
 - `Invoke-PageKeyboard` - Send keyboard input to the page
@@ -74,7 +74,7 @@ Open-PlaywrightPage -Url "https://playwright.dev/"
 ### Click a Button
 
 ```powershell
-Get-PlaywrightPageElement -ByText "Submit" | Invoke-PlaywrightLocatorClick
+Get-PlaywrightPageLocator -ByText "Submit" | Invoke-PlaywrightLocatorClick
 ```
 
 
