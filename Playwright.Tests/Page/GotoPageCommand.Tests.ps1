@@ -5,7 +5,8 @@ Describe 'Open-PlaywrightPageUrl' {
         Start-Playwright
     }
     AfterAll {
-        Stop-Playwright
+           Stop-Playwright
+           Remove-TestHtmlPagesFolder
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Url and load test file' {
@@ -13,13 +14,11 @@ Describe 'Open-PlaywrightPageUrl' {
             $testFilePath = New-BasicTestHtmlPage -FileName 'GotoPageTest.html' -Title 'Goto Test' -Body '<div id="test">Hello Playwright!</div>'
             # Start a new browser instance
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            Start-PlaywrightPage -Enter
             # Open the test file in the browser
-            $result = Open-PlaywrightPageUrl -Url $testFilePath
+            $result = Open-PlaywrightPage -Url $testFilePath
             $result | Should -Not -BeNullOrEmpty
             # Optionally, validate page content
-            $text = Invoke-PlaywrightLocatorText -Page $result -Selector '#test'
-            $text | Should -Be 'Hello Playwright!'
+            Assert-PlaywrightLocator -Locator ($result.Locator('#test')) -HasText 'Hello Playwright!'
         }
     }
 }

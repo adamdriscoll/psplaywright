@@ -39,3 +39,25 @@ function New-BasicTestHtmlPage {
 "@
     return New-TestHtmlFile -FileName $FileName -HtmlContent $html -OutputDirectory $OutputDirectory
 }
+
+function Remove-TestHtmlPagesFolder {
+    [CmdletBinding()]
+    param(
+        [string]$TargetDirectory = (Join-Path $PSScriptRoot 'TestPages')
+    )
+    if (Test-Path $TargetDirectory) {
+        try {
+            Remove-Item -Path $TargetDirectory -Recurse -Force
+            Write-Verbose "Removed folder: $TargetDirectory"
+            return $true
+        }
+        catch {
+            Write-Warning "Failed to remove folder: $TargetDirectory. $_"
+            return $false
+        }
+    }
+    else {
+        Write-Verbose "Folder does not exist: $TargetDirectory"
+        return $false
+    }
+}
