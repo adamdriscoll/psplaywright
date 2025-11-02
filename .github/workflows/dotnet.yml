@@ -19,4 +19,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./PSPlaywright/psplaywright.csproj
     - name: Build
-      run: dotnet build ./PSPlaywright/psplaywright.csproj --no-restore --configuration Release
+      run: dotnet publish ./PSPlaywright/psplaywright.csproj --no-restore --configuration Release
+      - name: Run Pester Tests
+        shell: pwsh
+        run: |
+          Install-Module -Name Pester -Force -SkipPublisherCheck
+          Import-Module ./PSPlaywright/bin/Release/netstandard2.0/publish/PSPlaywright.psd1
+          Install-Playwright
+          Invoke-Pester -Path ./Playwright.Tests -Output Detailed
