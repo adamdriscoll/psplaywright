@@ -22,13 +22,38 @@ Microsoft Playwright is a Node.js library for browser automation. It supports Ch
 
 ### Page Commands
 
-- `Goto-PlaywrightPage` - Navigate to a URL
-- `Reload-PlaywrightPage` - Reload the current page
-- `Screenshot-PlaywrightPage` - Take a screenshot of the page
-- `Pdf-PlaywrightPage` - Generate a PDF of the page
+The following Page cmdlets are available:
+
+- `Add-PlaywrightPageInitScript` - Add an initialization script to the page
+- `Add-PlaywrightPageLocatorHandler` - Add a locator handler to the page
+- `Set-PlaywrightPageToFront` - Bring the page to the front
 - `Close-PlaywrightPage` - Close the current page
-- `SetContent-PlaywrightPage` - Set the HTML content of the page
-- `Title-PlaywrightPage` - Get the title of the page
+- `Get-PlaywrightPageContent` - Get the content of the page
+- `Set-PlaywrightPageDragAndDrop` - Perform drag and drop on the page
+- `Set-PlaywrightPageMedia` - Emulate media features on the page
+- `Enter-PlaywrightPage` - Enter the page context
+- `Get-PlaywrightPageJavascriptHandle` - Evaluate JavaScript and get a handle
+- `Exit-PlaywrightPage` - Exit the page context
+- `Get-PlaywrightPageElement` - Get an element from the page
+- `Open-PlaywrightPageUrl` - Navigate to a URL
+- `Invoke-PlaywrightPageJavascript` - Invoke JavaScript on the page
+- `Invoke-PageKeyboard` - Send keyboard input to the page
+- `Get-PlaywrightPageOpener` - Get the opener of the page
+- `Invoke-PlaywrightPageNavigation` - Handle page navigation
+- `Suspend-PlaywrightPage` - Pause the page
+- `Get-PlaywrightPagePdf` - Generate a PDF of the page
+- `Reset-PlaywrightPage` - Reload the current page
+- `Remove-PlaywrightPageLocatorHandler` - Remove a locator handler from the page
+- `Invoke-PlaywrightPageGarageCollection` - Request garbage collection on the page
+- `Invoke-PlaywrightPageRequest` - Route requests from a HAR file
+- `Register-PlaywrightPageRouteHandler` - Route network requests on the page
+- `Invoke-PlaywrightPageRunAndWaitForEvent` - Run and wait for a page event
+- `Get-PlaywrightPageScreenshot` - Take a screenshot of the page
+- `Set-PlaywrightPageContent` - Set the HTML content of the page
+- `Set-PlaywrightPageViewportSize` - Set the viewport size of the page
+- `Get-PlaywrightPageTitle` - Get the title of the page
+- `Unregister-PlaywrightPageRoute` - Remove all routes from the page
+- `Wait-PlaywrightPageEvent` - Wait for a page event
 
 ### Locator Commands
 
