@@ -2,17 +2,23 @@
 Describe 'Invoke-PlaywrightPageKeyboard' {
     BeforeAll {
         Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
+        Import-Module "$PSScriptRoot\..\TestHttpServer.psm1"
         Start-Playwright
+        $TestPagesDir = Join-Path $PSScriptRoot '..\TestPages'
+        $server = Start-TestHttpServer -RootFolder $TestPagesDir -Port 9999
+        $global:testServer = $server
     }
     AfterAll {
         Stop-Playwright
+        if ($global:testServer) { Stop-TestHttpServer -ServerInfo $global:testServer }
         Remove-TestHtmlPagesFolder
     }
     Context 'Keyboard Actions' {
         It 'Should type text into input using keyboard' {
             $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest.html' -Title 'Keyboard Test' -Body '<input id="input" />'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            $page = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
+            $url = "http://localhost:9999/KeyboardTest.html"
+            $page = Open-PlaywrightPage -Url $url
             # Focus the input
             $page.Locator('#input').ClickAsync().GetAwaiter().GetResult()
             # Type text
@@ -23,7 +29,8 @@ Describe 'Invoke-PlaywrightPageKeyboard' {
         It 'Should press, down, up, and insert text using keyboard' {
             $testFilePath = New-BasicTestHtmlPage -FileName 'KeyboardTest2.html' -Title 'Keyboard Test 2' -Body '<input id="input2" />'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            $page = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
+            $url = "http://localhost:9999/KeyboardTest2.html"
+            $page = Open-PlaywrightPage -Url $url
             $page.Locator('#input2').ClickAsync().GetAwaiter().GetResult()
             # Insert text
             Invoke-PlaywrightPageKeyboard -Page $page -InsertText 'abc'

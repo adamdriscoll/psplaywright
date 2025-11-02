@@ -1,6 +1,6 @@
 Describe 'Open-PlaywrightPageUrl' {
     BeforeAll {
-        Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
+    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1" -Force
         Start-Playwright
     }
     AfterAll {
@@ -9,14 +9,12 @@ Describe 'Open-PlaywrightPageUrl' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Url and load test file' {
-            # Create a new HTML test file
-            $testFilePath = New-BasicTestHtmlPage -FileName 'GotoPageTest.html' -Title 'Goto Test' -Body '<div id="test">Hello Playwright!</div>'
-            # Start a new browser instance
+            Ensure-TestHttpServer | Out-Null
+            $testFileName = New-BasicTestHtmlPage -FileName 'GotoPageTest.html' -Title 'Goto Test' -Body '<div id="test">Hello Playwright!</div>'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
-            # Open the test file in the browser
-            $result = Open-PlaywrightPage -Url ($testFilePath -replace '\\','/')
+            $pageUrl = Get-TestHtmlPageUrl -FileName $testFileName
+            $result = Open-PlaywrightPage -Url $pageUrl
             $result | Should -Not -BeNullOrEmpty
-            # Optionally, validate page content
             Assert-PlaywrightLocator -Locator ($result.Locator('#test')) -HasText 'Hello Playwright!'
         }
     }

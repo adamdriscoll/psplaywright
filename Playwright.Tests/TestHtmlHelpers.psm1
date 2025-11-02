@@ -1,4 +1,5 @@
 Import-Module "$PSScriptRoot\..\PSPlaywright\bin\Release\netstandard2.0\publish\PSPlaywright.psd1" -Global
+Import-Module "$PSScriptRoot\TestHttpServer.psm1" -Global -Force
 
 function New-TestHtmlFile {
     [CmdletBinding()]
@@ -14,7 +15,8 @@ function New-TestHtmlFile {
     }
     $filePath = Join-Path $OutputDirectory $FileName
     Set-Content -Path $filePath -Value $HtmlContent -Encoding UTF8
-    return $filePath
+    # Return the relative file name for HTTP server usage
+    return $FileName
 }
 
 function New-BasicTestHtmlPage {
@@ -38,6 +40,26 @@ function New-BasicTestHtmlPage {
 </html>
 "@
     return New-TestHtmlFile -FileName $FileName -HtmlContent $html -OutputDirectory $OutputDirectory
+}
+
+function Get-TestHtmlPageUrl {
+    param(
+        [Parameter(Mandatory)]
+        [string]$FileName,
+        [int]$Port = 9999
+    )
+    return "http://localhost:$Port/$FileName"
+}
+
+function Ensure-TestHttpServer {
+    param(
+        [int]$Port = 9999
+    )
+    $TestPagesDir = Join-Path $PSScriptRoot 'TestPages'
+    if (-not $global:testServer) {
+        $global:testServer = Start-TestHttpServer -RootFolder $TestPagesDir -Port $Port
+    }
+    return $global:testServer
 }
 
 function Remove-TestHtmlPagesFolder {
