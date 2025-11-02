@@ -6,26 +6,24 @@ namespace psplaywright
     [Cmdlet(VerbsCommon.Get, "PlaywrightPageScreenshot")]
     public class ScreenshotPageCommand : PageCommandBase
     {
-        [Parameter(Mandatory = true, Position = 0)]
-        public IPage? Page { get; set; }
-
         [Parameter(Position = 1)]
         public string? Path { get; set; }
 
         protected override void ProcessRecord()
         {
+            var page = GetPageInstance();
             if (!string.IsNullOrEmpty(Path))
             {
-                if (Page != null && Path != null)
+                if (page != null && Path != null)
                 {
-                    Nito.AsyncEx.AsyncContext.Run(() => Page.ScreenshotAsync(new PageScreenshotOptions { Path = Path }));
+                    Nito.AsyncEx.AsyncContext.Run(() => page.ScreenshotAsync(new PageScreenshotOptions { Path = Path }));
                 }
             }
             else
             {
-                if (Page != null)
+                if (page != null)
                 {
-                    Nito.AsyncEx.AsyncContext.Run(() => Page.ScreenshotAsync());
+                    Nito.AsyncEx.AsyncContext.Run(() => page.ScreenshotAsync());
                 }
             }
         }

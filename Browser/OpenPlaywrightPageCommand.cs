@@ -7,7 +7,7 @@ namespace psplaywright;
 public class OpenPlaywrightPageCommand : BrowserCommandBase
 {
     [Parameter]
-    public string? Url { get; set; }
+    public string Url { get; set; } = string.Empty;
 
     protected override void ProcessRecord()
     {

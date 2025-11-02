@@ -7,15 +7,14 @@ namespace psplaywright
     public class RoutePageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
-        public string UrlPattern { get; set; }
+        public string? UrlPattern { get; set; }
 
         [Parameter(Mandatory = true, Position = 1)]
-        public ScriptBlock Handler { get; set; }
+        public ScriptBlock? Handler { get; set; }
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.RouteAsync(UrlPattern, route => Handler.InvokeReturnAsIs(route)).GetAwaiter().GetResult();
+            GetPageInstance().RouteAsync(UrlPattern!, route => Handler!.InvokeReturnAsIs(route)).GetAwaiter().GetResult();
         }
     }
 }

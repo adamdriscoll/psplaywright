@@ -1,5 +1,4 @@
 using System.Management.Automation;
-using Microsoft.Playwright;
 
 namespace psplaywright
 {
@@ -8,8 +7,7 @@ namespace psplaywright
     {
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            var opener = Page.OpenerAsync().GetAwaiter().GetResult();
+            var opener = GetPageInstance().OpenerAsync().GetAwaiter().GetResult();
             WriteObject(opener);
         }
     }

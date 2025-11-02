@@ -1,5 +1,4 @@
 using System.Management.Automation;
-using Microsoft.Playwright;
 
 namespace psplaywright
 {
@@ -7,15 +6,14 @@ namespace psplaywright
     public class ExposeBindingPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Parameter(Mandatory = true, Position = 1)]
-        public ScriptBlock Callback { get; set; }
+        public ScriptBlock? Callback { get; set; }
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.ExposeBindingAsync(Name, (source, args) => Callback.InvokeReturnAsIs(source)).GetAwaiter().GetResult();
+            GetPageInstance().ExposeBindingAsync(Name, (source, args) => Callback!.InvokeReturnAsIs(source)).GetAwaiter().GetResult();
         }
     }
 }

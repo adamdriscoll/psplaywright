@@ -7,12 +7,11 @@ namespace psplaywright
     public class RemoveLocatorHandlerPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
-        public ILocator Locator { get; set; }
+        public ILocator? Locator { get; set; }
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.RemoveLocatorHandlerAsync(Locator).GetAwaiter().GetResult();
+            GetPageInstance().RemoveLocatorHandlerAsync(Locator!).GetAwaiter().GetResult();
         }
     }
 }

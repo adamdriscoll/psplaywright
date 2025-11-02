@@ -36,7 +36,7 @@ namespace psplaywright
 		}
 
 		// Exit current browser (pop from stack)
-		public IBrowser ExitBrowser()
+		public IBrowser? ExitBrowser()
 		{
 			if (Browsers.Count > 0)
 				return Browsers.Pop();

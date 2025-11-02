@@ -7,10 +7,10 @@ namespace psplaywright
     public class ExposeFunctionPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Parameter(Mandatory = true, Position = 1)]
-        public ScriptBlock Callback { get; set; }
+        public ScriptBlock Callback { get; set; } = null!;
 
         protected override void ProcessRecord()
         {

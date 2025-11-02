@@ -14,8 +14,7 @@ namespace psplaywright
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.SetViewportSizeAsync(Width, Height).GetAwaiter().GetResult();
+            GetPageInstance().SetViewportSizeAsync(Width, Height).GetAwaiter().GetResult();
         }
     }
 }

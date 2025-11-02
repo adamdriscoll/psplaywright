@@ -8,8 +8,7 @@ namespace psplaywright
     {
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.RequestGCAsync().GetAwaiter().GetResult();
+            GetPageInstance().RequestGCAsync().GetAwaiter().GetResult();
         }
     }
 }

@@ -6,9 +6,6 @@ namespace psplaywright
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageEmulateMedia")]
     public class EmulateMediaPageCommand : PageCommandBase
     {
-    [Parameter(Mandatory = true, Position = 0)]
-    public IPage? Page { get; set; }
-
     [Parameter(Position = 1)]
     public Media? Media { get; set; }
 
@@ -17,18 +14,14 @@ namespace psplaywright
 
         protected override void ProcessRecord()
         {
-            if (Page == null)
-            {
-                ThrowTerminatingError(new ErrorRecord(new System.ArgumentNullException(nameof(Page)), "PageNull", ErrorCategory.InvalidArgument, null));
-            }
-
+            var page = GetPageInstance();
             var options = new PageEmulateMediaOptions();
             if (Media != null)
                 options.Media = Media;
             if (ColorScheme != null)
                 options.ColorScheme = ColorScheme;
 
-            Page!.EmulateMediaAsync(options).GetAwaiter().GetResult();
+            page.EmulateMediaAsync(options).GetAwaiter().GetResult();
         }
     }
 }

@@ -1,5 +1,4 @@
 using System.Management.Automation;
-using Microsoft.Playwright;
 
 namespace psplaywright
 {
@@ -7,12 +6,11 @@ namespace psplaywright
     public class SetContentPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
-        public string Html { get; set; }
+        public string? Html { get; set; }
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-            Page.SetContentAsync(Html).GetAwaiter().GetResult();
+            GetPageInstance().SetContentAsync(Html!).GetAwaiter().GetResult();
         }
     }
 }
