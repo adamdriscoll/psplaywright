@@ -8,7 +8,7 @@ Describe "UnrouteAllPageCommand" {
         Stop-Playwright
     }
     It "Should unroute all page events" {
-    $browser = Start-PlaywrightBrowser
+    $browser = Start-PlaywrightBrowser -Headless
     $page = Open-PlaywrightPage -Browser $browser
     # Only test UnrouteAllAsync to avoid overload ambiguity
     Unroute-AllPlaywrightPage -Page $page

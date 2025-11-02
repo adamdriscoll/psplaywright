@@ -8,7 +8,7 @@ Describe 'Wait-PlaywrightPageEvent' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid EventName' {
-            $browser = Start-PlaywrightBrowser
+            $browser = Start-PlaywrightBrowser -Headless
             $page = Open-PlaywrightPage -Browser $browser
             $null = $page | Wait-PlaywrightPageEvent -EventType 'LoadState' -State ([Microsoft.Playwright.LoadState]::Load)
             $true | Should -Be $true

@@ -12,7 +12,7 @@ public class StartPlaywrightBrowserCommand : PlaywrightContextCommand
     public string BrowserType { get; set; } = "chromium";
 
     [Parameter]
-    public SwitchParameter Headless { get; set; }
+    public SwitchParameter Headless { get; set; } = new SwitchParameter(true);
     
     [Parameter]
     public SwitchParameter Enter { get; set; }

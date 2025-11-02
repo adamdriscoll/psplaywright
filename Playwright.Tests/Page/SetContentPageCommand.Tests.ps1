@@ -10,7 +10,7 @@ Describe "SetContentPageCommand" {
     It "Should set the page content" {
         # TODO: Add actual test logic
     $html = "<html><body><h1>Test Content</h1></body></html>"
-    $browser = Start-PlaywrightBrowser
+    $browser = Start-PlaywrightBrowser -Headless
     $page = Open-PlaywrightPage -Browser $browser
     Set-PlaywrightPageContent -Html $html -Page $page
     $content = $page.ContentAsync().GetAwaiter().GetResult()

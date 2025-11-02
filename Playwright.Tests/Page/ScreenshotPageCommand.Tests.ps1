@@ -8,7 +8,7 @@ Describe 'Get-PlaywrightPageScreenshot' {
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Path' {
-            $browser = Start-PlaywrightBrowser
+            $browser = Start-PlaywrightBrowser -Headless
             $page = Open-PlaywrightPage -Browser $browser
             Set-PlaywrightPageContent -Html '<html><body><h1>Screenshot Test</h1></body></html>' -Page $page
             $screenshotPath = 'C:\temp\screenshot.png'

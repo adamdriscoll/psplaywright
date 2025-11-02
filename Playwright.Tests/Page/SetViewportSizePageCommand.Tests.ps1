@@ -8,7 +8,7 @@ Describe "SetViewportSizePageCommand" {
         Stop-Playwright
     }
     It "Should set the viewport size" {
-    $browser = Start-PlaywrightBrowser
+    $browser = Start-PlaywrightBrowser -Headless
     $page = Open-PlaywrightPage -Browser $browser
     Set-PlaywrightPageViewportSize -Page $page -Width 800 -Height 600
     $size = $page.ViewportSize

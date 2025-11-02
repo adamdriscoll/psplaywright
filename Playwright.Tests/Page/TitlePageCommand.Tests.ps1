@@ -8,7 +8,7 @@ Describe "TitlePageCommand" {
         Stop-Playwright
     }
     It "Should get the page title" {
-    $browser = Start-PlaywrightBrowser
+    $browser = Start-PlaywrightBrowser -Headless
     $page = Open-PlaywrightPage -Browser $browser
     $html = "<html><head><title>My Test Title</title></head><body></body></html>"
     Set-PlaywrightPageContent -Html $html -Page $page
