@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Get, "PlaywrightPageOpener")]
-    public class OpenerPageCommand : PlaywrightCmdletBase
+    public class OpenerPageCommand : PageCommandBase
     {
         protected override void ProcessRecord()
         {

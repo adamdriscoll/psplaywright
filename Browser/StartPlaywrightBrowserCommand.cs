@@ -5,7 +5,7 @@ using Nito.AsyncEx;
 namespace psplaywright;
 
 [Cmdlet(VerbsLifecycle.Start, "PlaywrightBrowser")]
-public class StartPlaywrightBrowserCommand : PlaywrightCmdletBase
+public class StartPlaywrightBrowserCommand : PlaywrightContextCommand
 {
     [Parameter(Mandatory = true)]
     [ValidateSet("chromium", "firefox", "webkit")]
@@ -16,19 +16,22 @@ public class StartPlaywrightBrowserCommand : PlaywrightCmdletBase
 
     protected override void ProcessRecord()
     {
-        var playwright = GetPlaywrightInstance();
+        var playwright = GetPlaywrightContext();
+
+        if (playwright.Playwright == null)
+            throw new Exception("Playwright instance not found. Call Start-Playwright first.");
 
         IBrowser? browser = null;
         switch (BrowserType.ToLowerInvariant())
         {
             case "chromium":
-                browser = AsyncContext.Run(() => playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
+                browser = AsyncContext.Run(() => playwright.Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
                 break;
             case "firefox":
-                browser = AsyncContext.Run(() => playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
+                browser = AsyncContext.Run(() => playwright.Playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
                 break;
             case "webkit":
-                browser = AsyncContext.Run(() => playwright.Webkit.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
+                browser = AsyncContext.Run(() => playwright.Playwright.Webkit.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Headless.IsPresent }));
                 break;
             default:
                 ThrowTerminatingError(new ErrorRecord(

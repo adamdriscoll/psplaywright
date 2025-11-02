@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageDragAndDrop")]
-    public class DragAndDropPageCommand : PSCmdlet
+    public class DragAndDropPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
         [Cmdlet(VerbsCommon.Set, "PlaywrightPageToFront")]
-    public class BringToFrontPageCommand : PSCmdlet
+    public class BringToFrontPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

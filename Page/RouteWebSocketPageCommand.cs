@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageRouteWebSocket")]
-    public class RouteWebSocketPageCommand : PlaywrightCmdletBase
+    public class RouteWebSocketPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string UrlPattern { get; set; }

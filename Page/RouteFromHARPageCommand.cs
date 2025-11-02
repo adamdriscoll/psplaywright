@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageRouteFromHAR")]
-    public class RouteFromHARPageCommand : PlaywrightCmdletBase
+    public class RouteFromHARPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string HarPath { get; set; }

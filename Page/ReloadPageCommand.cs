@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace psplaywright.PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPage")]
-    public class ReloadPageCommand : PSCmdlet
+    public class ReloadPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
     public IPage? Page { get; set; }

@@ -2,16 +2,16 @@ using System.Management.Automation;
 using Microsoft.Playwright;
 using System.Collections.Generic;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Get, "PlaywrightPageRequests")]
-    public class RequestsPageCommand : PlaywrightCmdletBase
+    public class RequestsPageCommand : PageCommandBase
     {
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            var requests = Page.RequestsAsync().GetAwaiter().GetResult();
-            WriteObject(requests, true);
+            // TODO: var requests = Page.RequestsAsync().GetAwaiter().GetResult();
+            // WriteObject(requests, true);
         }
     }
 }

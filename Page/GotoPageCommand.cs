@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace psplaywright.PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Open, "PlaywrightPage")]
-    public class GotoPageCommand : PSCmdlet
+    public class GotoPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

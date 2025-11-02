@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace psplaywright.PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Get, "PlaywrightPageScreenshot")]
-    public class ScreenshotPageCommand : PSCmdlet
+    public class ScreenshotPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Remove, "PlaywrightPageLocatorHandler")]
-    public class RemoveLocatorHandlerPageCommand : PlaywrightCmdletBase
+    public class RemoveLocatorHandlerPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public ILocator Locator { get; set; }

@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
         [Cmdlet(VerbsCommon.Set, "PlaywrightPageGoBack")]
-        public class GoBackPageCommand : PSCmdlet
+    public class GoBackPageCommand : PageCommandBase
     {
             [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

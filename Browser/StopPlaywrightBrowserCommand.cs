@@ -5,21 +5,15 @@ namespace psplaywright
 {
     [Cmdlet(VerbsLifecycle.Stop, "PlaywrightBrowser", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    public class StopPlaywrightBrowserCommand : PSCmdlet
+    public class StopPlaywrightBrowserCommand : BrowserCommandBase
     {
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0
-        )]
-    public IBrowser? Browser { get; set; }
-
         protected override void ProcessRecord()
         {
-            if (Browser != null)
+            var browser = GetBrowserInstance();
+
+            if (browser != null)
             {
-                Nito.AsyncEx.AsyncContext.Run(() => Browser.CloseAsync());
+                Nito.AsyncEx.AsyncContext.Run(() => browser.CloseAsync());
             }
         }
     }

@@ -12,7 +12,20 @@ namespace psplaywright
 		public void Dispose()
 		{
 			// Dispose of Playwright and all associated resources
-			Playwright?.Dispose();
+            while (Browsers.Count > 0)
+            {
+                var browser = Browsers.Pop();
+                browser.CloseAsync().GetAwaiter().GetResult();
+            }
+
+            while (Pages.Count > 0)
+            {
+                var page = Pages.Pop();
+                page.CloseAsync().GetAwaiter().GetResult();
+            }
+
+            Playwright?.Dispose();
+            Playwright = null;
 		}
 
 

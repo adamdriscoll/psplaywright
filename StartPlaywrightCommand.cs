@@ -9,6 +9,9 @@ namespace psplaywright;
 [Cmdlet(VerbsLifecycle.Start, "Playwright")]
 public class StartPlaywrightCommand : PlaywrightContextCommand
 {
+    [Parameter]
+    public SwitchParameter PassThru { get; set; }
+
     protected override void ProcessRecord()
     {
         var context = GetPlaywrightContext();
@@ -23,6 +26,11 @@ public class StartPlaywrightCommand : PlaywrightContextCommand
         }
 
         var playwright = AsyncContext.Run(() => Playwright.CreateAsync());
-        WriteObject(playwright);
+        context.Playwright = playwright;
+
+        if (PassThru.IsPresent)
+        {
+            WriteObject(playwright);
+        }
     }
 }

@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPageRunAndWaitForEvent")]
-    public class RunAndWaitForPageEventCommand : PSCmdlet
+    public class RunAndWaitForPageEventCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageEmulateMedia")]
-    public class EmulateMediaPageCommand : PSCmdlet
+    public class EmulateMediaPageCommand : PageCommandBase
     {
     [Parameter(Mandatory = true, Position = 0)]
     public IPage? Page { get; set; }

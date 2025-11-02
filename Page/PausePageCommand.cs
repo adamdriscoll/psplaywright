@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsLifecycle.Suspend, "PlaywrightPage")]
-    public class PausePageCommand : PlaywrightCmdletBase
+    public class PausePageCommand : PageCommandBase
     {
         protected override void ProcessRecord()
         {

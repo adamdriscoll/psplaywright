@@ -2,10 +2,10 @@ using System.Management.Automation;
 using Microsoft.Playwright;
 using System.Collections.Generic;
 
-namespace PageCommands
+namespace psplaywright
 {
         [Cmdlet(VerbsCommon.Get, "PlaywrightPageErrors")]
-        public class PageErrorsPageCommand : PSCmdlet
+    public class PageErrorsPageCommand : PageCommandBase
     {
             [Parameter(Mandatory = true, Position = 0)]
         public IPage? Page { get; set; }

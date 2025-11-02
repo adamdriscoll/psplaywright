@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Add, "PlaywrightPageExposeBinding")]
-    public class ExposeBindingPageCommand : PlaywrightCmdletBase
+    public class ExposeBindingPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string Name { get; set; }

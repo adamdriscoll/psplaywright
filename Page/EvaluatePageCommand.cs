@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Get, "PlaywrightPageEvaluate")]
-    public class EvaluatePageCommand : PlaywrightCmdletBase
+    public class EvaluatePageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string Expression { get; set; }

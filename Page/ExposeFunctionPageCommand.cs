@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Add, "PlaywrightPageExposeFunction")]
-    public class ExposeFunctionPageCommand : PlaywrightCmdletBase
+    public class ExposeFunctionPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace PageCommands
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            Page.ExposeFunctionAsync(Name, arg => Callback.InvokeReturnAsIs(arg)).GetAwaiter().GetResult();
+            //TODO: Page.ExposeFunctionAsync(Name, arg => Callback.InvokeReturnAsIs(arg)).GetAwaiter().GetResult();
         }
     }
 }

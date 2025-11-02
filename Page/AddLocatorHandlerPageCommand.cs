@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
         [Cmdlet(VerbsCommon.Add, "PlaywrightPageLocatorHandler")]
-        public class AddLocatorHandlerPageCommand : PSCmdlet
+    public class AddLocatorHandlerPageCommand : PageCommandBase
     {
 
             [Parameter(Mandatory = true, Position = 0)]

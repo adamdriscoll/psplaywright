@@ -1,10 +1,10 @@
 using System.Management.Automation;
 using Microsoft.Playwright;
 
-namespace PageCommands
+namespace psplaywright
 {
     [Cmdlet(VerbsCommon.Set, "PlaywrightPageViewportSize")]
-    public class SetViewportSizePageCommand : PlaywrightCmdletBase
+    public class SetViewportSizePageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public int Width { get; set; }
