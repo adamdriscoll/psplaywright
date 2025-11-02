@@ -1,7 +1,7 @@
 using System.Management.Automation;
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Open, "PlaywrightPage")]
+    [Cmdlet(VerbsCommon.Open, "PlaywrightPageUrl")]
     public class GotoPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 1)]

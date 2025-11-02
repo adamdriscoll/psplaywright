@@ -2,8 +2,8 @@ using System.Management.Automation;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Get, "PlaywrightPageEvaluate")]
-    public class EvaluatePageCommand : PageCommandBase
+    [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPageJavascript")]
+    public class InvokeJavascriptPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string Expression { get; set; } = string.Empty;

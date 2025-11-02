@@ -3,7 +3,7 @@ using Microsoft.Playwright;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Set, "PlaywrightPageRequestGC")]
+    [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPageGarageCollection")]
     public class RequestGCPageCommand : PageCommandBase
     {
         protected override void ProcessRecord()

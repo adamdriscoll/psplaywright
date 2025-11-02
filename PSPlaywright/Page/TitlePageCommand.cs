@@ -9,7 +9,7 @@ namespace psplaywright
         protected override void ProcessRecord()
         {
             var page = GetPageInstance();
-            var title = page != null ? Nito.AsyncEx.AsyncContext.Run(() => page.TitleAsync()) : null;
+            var title = Nito.AsyncEx.AsyncContext.Run(() => page.TitleAsync());
             WriteObject(title);
         }
     }

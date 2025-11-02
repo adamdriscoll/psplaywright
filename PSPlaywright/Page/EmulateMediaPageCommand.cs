@@ -3,7 +3,7 @@ using Microsoft.Playwright;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Set, "PlaywrightPageEmulateMedia")]
+    [Cmdlet(VerbsCommon.Set, "PlaywrightPageMedia")]
     public class EmulateMediaPageCommand : PageCommandBase
     {
     [Parameter(Position = 1)]

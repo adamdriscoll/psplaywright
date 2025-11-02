@@ -14,12 +14,12 @@ namespace psplaywright
         [Parameter(Mandatory = true, Position = 2)]
         public ScriptBlock? Handler { get; set; }
 
-            protected override void ProcessRecord()
-            {
-                var page = GetPageInstance();
-                page.AddLocatorHandlerAsync(Locator!, async loc => { 
-                    Handler!.InvokeReturnAsIs(loc); 
-                }).GetAwaiter().GetResult();
-            }
+        protected override void ProcessRecord()
+        {
+            var page = GetPageInstance();
+            page.AddLocatorHandlerAsync(Locator!, async loc => { 
+                Handler!.InvokeReturnAsIs(loc); 
+            }).GetAwaiter().GetResult();
+        }
     }
 }

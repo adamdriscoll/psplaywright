@@ -2,7 +2,7 @@ using System.Management.Automation;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Get, "PlaywrightPageEvaluateHandle")]
+    [Cmdlet(VerbsCommon.Get, "PlaywrightPageJavascriptHandle")]
     public class EvaluateHandlePageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]

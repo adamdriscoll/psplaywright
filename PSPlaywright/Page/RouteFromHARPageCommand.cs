@@ -2,7 +2,7 @@ using System.Management.Automation;
 
 namespace psplaywright
 {
-    [Cmdlet(VerbsCommon.Set, "PlaywrightPageRouteFromHAR")]
+    [Cmdlet(VerbsLifecycle.Invoke, "PlaywrightPageRequest")]
     public class RouteFromHARPageCommand : PageCommandBase
     {
         [Parameter(Mandatory = true, Position = 0)]
