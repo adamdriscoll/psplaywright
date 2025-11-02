@@ -1,8 +1,8 @@
 Describe 'Start-Playwright' {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
-    Start-Playwright
+        Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
+        try { Stop-Playwright } catch {}
+        Start-Playwright
     }
     AfterAll {
         Stop-Playwright

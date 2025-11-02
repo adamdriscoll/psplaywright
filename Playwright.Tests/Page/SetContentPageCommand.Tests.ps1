@@ -1,7 +1,7 @@
 # Basic test for SetContentPageCommand
 Describe "SetContentPageCommand" {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {

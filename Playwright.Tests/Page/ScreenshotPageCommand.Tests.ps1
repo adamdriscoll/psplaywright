@@ -1,18 +1,21 @@
 Describe 'Get-PlaywrightPageScreenshot' {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {
         Stop-Playwright
     }
     Context 'Parameter Validation' {
-        It 'Should require Path parameter' {
-            { Get-PlaywrightPageScreenshot } | Should -Throw
-        }
         It 'Should accept valid Path' {
-            $result = Get-PlaywrightPageScreenshot -Path 'C:\temp\screenshot.png'
-            $result | Should -Not -BeNullOrEmpty
+            $browser = Start-PlaywrightBrowser
+            $page = Open-PlaywrightPage -Browser $browser
+            Set-PlaywrightPageContent -Html '<html><body><h1>Screenshot Test</h1></body></html>' -Page $page
+            $screenshotPath = 'C:\temp\screenshot.png'
+            $null = $page | Get-PlaywrightPageScreenshot -Path $screenshotPath
+            Test-Path $screenshotPath | Should -Be $true
+            Remove-Item $screenshotPath -ErrorAction SilentlyContinue
+            Stop-PlaywrightBrowser -Browser $browser
         }
     }
 }

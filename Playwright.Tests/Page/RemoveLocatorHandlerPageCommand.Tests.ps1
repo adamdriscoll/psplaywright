@@ -1,7 +1,7 @@
 # Basic test for RemoveLocatorHandlerPageCommand
 Describe "RemoveLocatorHandlerPageCommand" {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {
@@ -11,8 +11,9 @@ Describe "RemoveLocatorHandlerPageCommand" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser
     # Add a locator handler first
-    $handlerId = Add-PlaywrightPageLocatorHandler -Page $page -Selector "#test" -Action { }
-    Remove-PlaywrightPageLocatorHandler -Page $page -HandlerId $handlerId
+    $locator = $page.Locator('#test')
+    Add-PlaywrightPageLocatorHandler -Page $page -Locator $locator -Handler { }
+    Remove-PlaywrightPageLocatorHandler -Page $page -Locator $locator
     # Pseudo check: ensure handler is removed (actual validation depends on implementation)
     $handlers = $page.LocatorHandlers.Count
     $handlers | Should -Be 0

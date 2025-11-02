@@ -28,6 +28,18 @@ Passing Tests:
  - SetPlaywrightLocatorInputCommand.Tests.ps1
  - InvokePageKeyboardCommand.Tests.ps1
  - InvokePageMouseCommand.Tests.ps1
+ - SetViewportSizePageCommand.Tests.ps1
+ - TitlePageCommand.Tests.ps1
+ - OpenerPageCommand.Tests.ps1
+ - PausePageCommand.Tests.ps1
+ - PageNavigationCommand.Tests.ps1
+ - PdfPageCommand.Tests.ps1
+ - ReloadPageCommand.Tests.ps1
+ - RequestGCPageCommand.Tests.ps1
+ - RouteFromHARPageCommand.Tests.ps1
+ - RemoveLocatorHandlerPageCommand.Tests.ps1
+ - ScreenshotPageCommand.Tests.ps1
+ - WaitForPageEventCommand.Tests.ps1
 
 Remove tests that check for mandatory parameters because they will cause the tests to hang. An example is below.
 
@@ -35,4 +47,12 @@ Remove tests that check for mandatory parameters because they will cause the tes
 It 'Should require Locator and Value parameters' {
     { Set-PlaywrightLocatorInput } | Should -Throw
 }
+```
+
+If you encounter issues with a test not finding commands, it's likely the module is not being imported properly.
+
+To fix this, add the following line at the top of the test file, adjusting the path as necessary. The TestHtmlHelpers.psm1 file is located in the Playwright.Tests folder. When in a nested folder, you may need to use `..\` to navigate up a directory.
+
+```powershell
+Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
 ```

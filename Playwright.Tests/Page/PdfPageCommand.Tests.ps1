@@ -1,7 +1,7 @@
 # Basic test for PdfPageCommand
 Describe "PdfPageCommand" {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {
@@ -12,7 +12,7 @@ Describe "PdfPageCommand" {
     $page = Open-PlaywrightPage -Browser $browser
     Set-PlaywrightPageContent -Html "<html><body><h1>PDF Test</h1></body></html>" -Page $page
     $pdfPath = "./test.pdf"
-    Export-PlaywrightPagePdf -Page $page -Path $pdfPath
+    Get-PlaywrightPagePdf -Page $page -Path $pdfPath
     Test-Path $pdfPath | Should -Be $true
     Remove-Item $pdfPath
     Stop-PlaywrightBrowser -Browser $browser
