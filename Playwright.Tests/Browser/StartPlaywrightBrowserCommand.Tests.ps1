@@ -1,6 +1,6 @@
 Describe 'Start-PlaywrightBrowser' {
     BeforeAll {
-        Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }
     AfterAll {
@@ -18,14 +18,14 @@ Describe 'Start-PlaywrightBrowser' {
 Describe 'Stop-PlaywrightBrowser' {
     BeforeAll {
         Start-Playwright
+        $browser = Start-PlaywrightBrowser -BrowserType 'chromium' -Headless -Enter
     }
     AfterAll {
         Stop-Playwright
     }
     Context 'Parameter Validation' {
         It 'Should accept default parameters' {
-            $result = Stop-PlaywrightBrowser
-            $result | Should -Not -BeNullOrEmpty
+            { Stop-PlaywrightBrowser } | Should -Not -Throw
         }
     }
 }

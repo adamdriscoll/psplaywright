@@ -1,6 +1,5 @@
 Describe 'Open-PlaywrightPageUrl' {
     BeforeAll {
-        Import-Module "$PSScriptRoot\..\..\PSPlaywright\bin\Release\netstandard2.0\publish\PSPlaywright.psd1"
         Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1"
         Start-Playwright
     }

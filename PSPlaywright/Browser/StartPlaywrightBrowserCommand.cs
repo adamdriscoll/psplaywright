@@ -7,7 +7,7 @@ namespace psplaywright;
 [Cmdlet(VerbsLifecycle.Start, "PlaywrightBrowser")]
 public class StartPlaywrightBrowserCommand : PlaywrightContextCommand
 {
-    [Parameter(Mandatory = true)]
+    [Parameter()]
     [ValidateSet("chromium", "firefox", "webkit")]
     public string BrowserType { get; set; } = "chromium";
 
