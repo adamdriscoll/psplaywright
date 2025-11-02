@@ -62,20 +62,79 @@ The following Page cmdlets are available:
 - `Set-PlaywrightLocatorSelect` - Select an option in a dropdown
 - `Get-PlaywrightLocatorInfo` - Get information about a locator
 
-## Basic Examples
+
+
+## Prerequisites
+
+**Node.js must be installed** for PSPlaywright to work. You can download Node.js from [nodejs.org](https://nodejs.org/). The module uses Playwright, which requires Node.js to run browser automation.
+
+## Installation
+
+You can install the PSPlaywright module from the PowerShell Gallery:
+
+```powershell
+Install-Module -Name 'PSPlaywright'
+```
+
+After importing the module, you must install the Playwright browsers required for automation:
+
+```powershell
+Install-Playwright
+```
+
+This will download and install Chromium, Firefox, and WebKit browsers for Playwright automation.
+
+## Examples
 
 ### Start a Browser and Open a Page
 
 ```powershell
-Start-PlaywrightBrowser -Browser Chromium -Enter
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
 Open-PlaywrightPage -Url "https://playwright.dev/"
+```
+
+### Find an Element on a Page
+
+```powershell
+$element = Find-PlaywrightPageElement -AltText "Logo" -Page $page
+$element = Find-PlaywrightPageElement -Label "Username" -Page $page
+$element = Find-PlaywrightPageElement -Role "button" -Page $page
+```
+
+### Get Locator Information
+
+```powershell
+$locator = $page.Locator('#myElement')
+$info = Get-PlaywrightLocatorInfo -Locator $locator
 ```
 
 ### Click a Button
 
 ```powershell
-Get-PlaywrightPageLocator -ByText "Submit" | Invoke-PlaywrightLocatorClick
+$button = Find-PlaywrightPageElement -Role "button" -Page $page
+Invoke-PlaywrightLocatorClick -Locator $button
+
+$button = Find-PlaywrightPageElement -Role "button" -Page $page
+Invoke-PlaywrightLocatorClick -Locator $button
 ```
 
+### Common Scenarios
+
+- **Assert Element Visibility**
+
+	```powershell
+	$locator = $page.Locator('#main')
+	Assert-PlaywrightLocator -Locator $locator -IsVisible
+	```
+
+- **Get Page Title**
+	```powershell
+	$title = Get-PlaywrightPageTitle -Page $page
+	```
+
+- **Take a Screenshot**
+	```powershell
+	Get-PlaywrightPageScreenshot -Page $page -Path './screenshot.png'
+	```
 
 For more advanced usage and additional examples, see the documentation and upcoming examples section.
