@@ -1,5 +1,12 @@
 # Basic test for SetViewportSizePageCommand
 Describe "SetViewportSizePageCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should set the viewport size" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser

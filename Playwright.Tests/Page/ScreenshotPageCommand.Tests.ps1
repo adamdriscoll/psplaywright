@@ -1,4 +1,11 @@
 Describe 'Get-PlaywrightPageScreenshot' {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     Context 'Parameter Validation' {
         It 'Should require Path parameter' {
             { Get-PlaywrightPageScreenshot } | Should -Throw

@@ -1,5 +1,12 @@
 # Basic test for SetContentPageCommand
 Describe "SetContentPageCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should set the page content" {
         # TODO: Add actual test logic
     $html = "<html><body><h1>Test Content</h1></body></html>"

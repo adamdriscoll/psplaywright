@@ -1,5 +1,12 @@
 # Basic test for OpenerPageCommand
 Describe "OpenerPageCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should handle opener page" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser

@@ -1,5 +1,12 @@
 # Basic test for RunAndWaitForPageEventCommand
 Describe "RunAndWaitForPageEventCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should run and wait for page event" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser

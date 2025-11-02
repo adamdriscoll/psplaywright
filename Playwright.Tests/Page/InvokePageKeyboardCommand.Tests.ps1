@@ -1,5 +1,12 @@
 # Basic test for InvokePageKeyboardCommand
 Describe "InvokePageKeyboardCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should invoke keyboard actions on page" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser

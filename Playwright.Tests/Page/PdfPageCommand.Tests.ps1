@@ -1,5 +1,12 @@
 # Basic test for PdfPageCommand
 Describe "PdfPageCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should generate PDF from page" {
     $browser = Start-PlaywrightBrowser
     $page = Open-PlaywrightPage -Browser $browser

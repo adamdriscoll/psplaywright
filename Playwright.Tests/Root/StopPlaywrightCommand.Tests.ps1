@@ -1,5 +1,12 @@
 # Basic test for StopPlaywrightCommand
 Describe "StopPlaywrightCommand" {
+    BeforeAll {
+    Import-Module "$PSScriptRoot\..\..\PSPlaywright\TestHtmlHelpers.psm1"
+        Start-Playwright
+    }
+    AfterAll {
+        Stop-Playwright
+    }
     It "Should stop Playwright context" {
     $browser = Start-PlaywrightBrowser
     Stop-PlaywrightBrowser -Browser $browser
