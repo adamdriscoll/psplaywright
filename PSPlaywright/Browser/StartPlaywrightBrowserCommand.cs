@@ -13,6 +13,9 @@ public class StartPlaywrightBrowserCommand : PlaywrightContextCommand
 
     [Parameter]
     public SwitchParameter Headless { get; set; }
+    
+    [Parameter]
+    public SwitchParameter Enter { get; set; }
 
     protected override void ProcessRecord()
     {
@@ -42,6 +45,10 @@ public class StartPlaywrightBrowserCommand : PlaywrightContextCommand
                 return;
         }
 
+        if (Enter.IsPresent)
+        {
+            playwright.EnterBrowser(browser);
+        }
         WriteObject(browser);
     }
 }
