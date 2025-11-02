@@ -56,10 +56,8 @@ function Start-TestHttpServerInstance {
         [int]$Port = 9999
     )
     $TestPagesDir = Join-Path $PSScriptRoot 'TestPages'
-    if (-not $global:testServer) {
-        $global:testServer = Start-TestHttpServer -RootFolder $TestPagesDir -Port $Port
-    }
-    return $global:testServer
+    $server = Start-TestHttpServer -RootFolder $TestPagesDir -Port $Port
+    return $server
 }
 
 function Remove-TestHtmlPagesFolder {

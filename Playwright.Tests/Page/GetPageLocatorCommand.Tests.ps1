@@ -2,14 +2,15 @@ Describe 'Find-PlaywrightPageElement' {
     BeforeAll {
         Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1" -Force
         Start-Playwright
+        $Server = Start-TestHttpServerInstance
     }
     AfterAll {
         Stop-Playwright
+        Stop-TestHttpServer -Server $Server
         Remove-TestHtmlPagesFolder
     }
     Context 'Parameter Validation and Element Finding' {
         It 'Should find element by AltText' {
-            Start-TestHttpServerInstance | Out-Null
             $fileName = New-BasicTestHtmlPage -FileName 'AltTextTest.html' -Body '<img src="img.png" alt="TestAlt" />'
             Start-PlaywrightBrowser -BrowserType 'chromium' -Enter
             $url = Get-TestHtmlPageUrl -FileName $fileName

@@ -1,14 +1,16 @@
 Describe 'Set-PlaywrightLocatorInput' {
     BeforeAll {
-    Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1" -Force
+        Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1" -Force
         Start-Playwright
+        $Server = Start-TestHttpServerInstance 
     }
     AfterAll {
         Stop-Playwright
+        Stop-TestHttpServer -Server $Server
     }
     Context 'Parameter Validation' {
         It 'Should accept valid Locator and Value' {
-            Start-TestHttpServerInstance | Out-Null
+            
             $browser = Start-PlaywrightBrowser -BrowserType 'chromium' -Headless
             $TestPagePath = New-BasicTestHtmlPage -FileName 'set-locator-input-test.html' -Body '<input id="username" />'
             $pageUrl = Get-TestHtmlPageUrl -FileName $TestPagePath

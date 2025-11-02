@@ -4,12 +4,12 @@ Describe 'Assert-PlaywrightLocator' {
         Start-Playwright
         $browser = Start-PlaywrightBrowser -BrowserType 'chromium' -Headless
         # Create a test HTML page with a #main element
-        $TestServer = Start-TestHttpServerInstance | Out-Null
-        $TestPagePath = New-BasicTestHtmlPage -FileName 'assert-locator-test.html' -Body '<div id="main">Main Content</div>'
+    $script:TestServer = Start-TestHttpServerInstance
+    $TestPagePath = New-BasicTestHtmlPage -FileName 'assert-locator-test.html' -Body '<div id="main">Main Content</div>'
     }
     AfterAll {
         Stop-Playwright
-        if ($TestServer) { Stop-TestHttpServer -ServerInfo $TestServer }
+    if ($script:TestServer) { Stop-TestHttpServer -ServerInfo $script:TestServer }
         Remove-TestHtmlPagesFolder
     }
     Context 'Parameter Validation' {

@@ -3,12 +3,12 @@ Describe 'Get-PlaywrightLocatorInfo' {
         Import-Module "$PSScriptRoot\..\TestHtmlHelpers.psm1" -Force
         Start-Playwright
         $browser = Start-PlaywrightBrowser -BrowserType 'chromium' -Headless
-        $TestServer = Start-TestHttpServerInstance | Out-Null
+    $script:TestServer = Start-TestHttpServerInstance
         $TestPagePath = New-BasicTestHtmlPage -FileName 'locator-info-test.html' -Body '<div id="myElement">Test</div><div id="first">First</div><div id="second">Second</div>'
     }
     AfterAll {
         Stop-Playwright
-        if ($TestServer) { Stop-TestHttpServer -ServerInfo $TestServer }
+    if ($script:TestServer) { Stop-TestHttpServer -ServerInfo $script:TestServer }
         Remove-TestHtmlPagesFolder
     }
     Context 'Parameter Validation' {
