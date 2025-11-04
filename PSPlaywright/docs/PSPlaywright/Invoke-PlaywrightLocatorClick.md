@@ -1,0 +1,298 @@
+---
+document type: cmdlet
+external help file: psplaywright.dll-Help.xml
+HelpUri: ''
+Locale: en-US
+Module Name: PSPlaywright
+ms.date: 11/03/2025
+PlatyPS schema version: 2024-05-01
+title: Invoke-PlaywrightLocatorClick
+---
+
+# Invoke-PlaywrightLocatorClick
+
+## SYNOPSIS
+
+{{ Fill in the Synopsis }}
+
+## SYNTAX
+
+### __AllParameterSets
+
+```
+Invoke-PlaywrightLocatorClick [-Locator] <ILocator> [[-Action] <string>] [-Button <string>]
+ [-ClickCount <int>] [-Delay <double>] [-Force <bool>] [-X <int>] [-Y <int>]
+ [-Modifiers <KeyboardModifier[]>] [-Trial <bool>] [-Timeout <double>] [<CommonParameters>]
+```
+
+## ALIASES
+
+This cmdlet has the following aliases,
+  {{Insert list of aliases}}
+
+## DESCRIPTION
+
+{{ Fill in the Description }}
+
+## EXAMPLES
+
+### Example 1
+
+{{ Add example description here }}
+
+## PARAMETERS
+
+### -Action
+
+{{ Fill Action Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Button
+
+{{ Fill Button Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -ClickCount
+
+{{ Fill ClickCount Description }}
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Delay
+
+{{ Fill Delay Description }}
+
+```yaml
+Type: System.Nullable`1[System.Double]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Force
+
+{{ Fill Force Description }}
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Locator
+
+{{ Fill Locator Description }}
+
+```yaml
+Type: Microsoft.Playwright.ILocator
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Modifiers
+
+{{ Fill Modifiers Description }}
+
+```yaml
+Type: Microsoft.Playwright.KeyboardModifier[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Timeout
+
+{{ Fill Timeout Description }}
+
+```yaml
+Type: System.Nullable`1[System.Double]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Trial
+
+{{ Fill Trial Description }}
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -X
+
+{{ Fill X Description }}
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -Y
+
+{{ Fill Y Description }}
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### System.Object
+
+{{ Fill in the Description }}
+
+## NOTES
+
+{{ Fill in the Notes }}
+
+## RELATED LINKS
+
+{{ Fill in the related links here }}
+
