@@ -13,7 +13,7 @@ title: Set-PlaywrightPageToFront
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Brings the page tab to the front (activates the tab).
 
 ## SYNTAX
 
@@ -25,24 +25,27 @@ Set-PlaywrightPageToFront [-Page <IPage>] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightPageToFront cmdlet brings the current page tab to the front, making it the active tab in the browser. This is useful when working with multiple tabs or windows.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Bring page to front
 
-{{ Add example description here }}
+```powershell
+Set-PlaywrightPageToFront
+```
+
+Activates the current page tab, bringing it to the front.
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +75,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This is particularly useful when automating scenarios with multiple tabs or windows.
+- The page will become the active/focused tab in the browser.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPage](Open-PlaywrightPage.md)
 

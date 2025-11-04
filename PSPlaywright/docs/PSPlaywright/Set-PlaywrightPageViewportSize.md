@@ -13,7 +13,7 @@ title: Set-PlaywrightPageViewportSize
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Sets the viewport size of the current page.
 
 ## SYNTAX
 
@@ -25,24 +25,35 @@ Set-PlaywrightPageViewportSize [-Width] <int> [-Height] <int> [-Page <IPage>] [<
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightPageViewportSize cmdlet changes the viewport dimensions of the browser page. This is useful for testing responsive designs or simulating different device screen sizes.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set viewport to desktop size
 
-{{ Add example description here }}
+```powershell
+Set-PlaywrightPageViewportSize -Width 1920 -Height 1080
+```
+
+Sets the viewport to a common desktop resolution.
+
+### Example 2: Set viewport to mobile size
+
+```powershell
+Set-PlaywrightPageViewportSize -Width 375 -Height 667
+```
+
+Sets the viewport to an iPhone size for mobile testing.
 
 ## PARAMETERS
 
 ### -Height
 
-{{ Fill Height Description }}
+The height of the viewport in pixels.
 
 ```yaml
 Type: System.Int32
@@ -63,7 +74,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -84,7 +95,7 @@ HelpMessage: ''
 
 ### -Width
 
-{{ Fill Width Description }}
+The width of the viewport in pixels.
 
 ```yaml
 Type: System.Int32
@@ -114,19 +125,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- The viewport size affects how the page is rendered and which media queries are active.
+- This does not change the actual browser window size, only the viewport.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPage](Open-PlaywrightPage.md)
 

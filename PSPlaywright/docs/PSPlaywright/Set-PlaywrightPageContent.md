@@ -13,7 +13,7 @@ title: Set-PlaywrightPageContent
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Sets the HTML content of the current page.
 
 ## SYNTAX
 
@@ -25,24 +25,45 @@ Set-PlaywrightPageContent [-Html] <string> [-Page <IPage>] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightPageContent cmdlet replaces the entire HTML content of the current page with the specified HTML string. This is useful for testing with custom HTML or dynamically generating page content.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set simple HTML content
 
-{{ Add example description here }}
+```powershell
+Set-PlaywrightPageContent -Html "<html><body><h1>Hello World</h1></body></html>"
+```
+
+Sets the page content to the specified HTML.
+
+### Example 2: Set content with a form
+
+```powershell
+$html = @"
+<html>
+<body>
+    <form>
+        <input type="text" id="username" />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+"@
+Set-PlaywrightPageContent -Html $html
+```
+
+Sets the page content to HTML containing a form, useful for testing form interactions.
 
 ## PARAMETERS
 
 ### -Html
 
-{{ Fill Html Description }}
+The HTML content to set on the page. This should be a complete HTML document string.
 
 ```yaml
 Type: System.String
@@ -63,7 +84,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -93,19 +114,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- The HTML content replaces the entire page content.
+- This is particularly useful for testing scenarios where you want to work with custom HTML without loading an external URL.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPageUrl](Open-PlaywrightPageUrl.md)
 

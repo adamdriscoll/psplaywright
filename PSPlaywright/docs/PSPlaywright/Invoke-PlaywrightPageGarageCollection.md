@@ -13,7 +13,7 @@ title: Invoke-PlaywrightPageGarageCollection
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Requests garbage collection on the page to free up memory.
 
 ## SYNTAX
 
@@ -25,24 +25,27 @@ Invoke-PlaywrightPageGarageCollection [-Page <IPage>] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Invoke-PlaywrightPageGarageCollection cmdlet requests garbage collection on the current page. This can help free up memory during long-running automation sessions.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Request garbage collection
 
-{{ Add example description here }}
+```powershell
+Invoke-PlaywrightPageGarageCollection
+```
+
+Requests garbage collection on the current page.
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +75,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This is typically used in long-running automation scenarios to manage memory usage.
+- Garbage collection is requested but not guaranteed to occur immediately.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPage](Open-PlaywrightPage.md)
 

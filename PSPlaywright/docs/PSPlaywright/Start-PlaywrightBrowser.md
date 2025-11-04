@@ -13,7 +13,7 @@ title: Start-PlaywrightBrowser
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Launches a Playwright browser instance (Chromium, Firefox, or WebKit).
 
 ## SYNTAX
 
@@ -25,24 +25,43 @@ Start-PlaywrightBrowser [-BrowserType <string>] [-Headless] [-Enter] [<CommonPar
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Start-PlaywrightBrowser cmdlet launches a browser instance of the specified type. You can launch Chromium, Firefox, or WebKit browsers in either headless or headed mode. The browser instance is returned so you can create pages and interact with web content.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Launch a headless Chromium browser
 
-{{ Add example description here }}
+```powershell
+$browser = Start-PlaywrightBrowser
+```
+
+Launches a Chromium browser in headless mode (default).
+
+### Example 2: Launch Firefox in headed mode
+
+```powershell
+$browser = Start-PlaywrightBrowser -BrowserType firefox -Headless:$false
+```
+
+Launches Firefox with a visible window.
+
+### Example 3: Launch browser and enter context
+
+```powershell
+Start-PlaywrightBrowser -Enter
+```
+
+Launches a browser and enters it into the current context, making it the default browser for subsequent commands.
 
 ## PARAMETERS
 
 ### -BrowserType
 
-{{ Fill BrowserType Description }}
+Specifies the type of browser to launch. Valid values are 'chromium', 'firefox', or 'webkit'. Default is 'chromium'.
 
 ```yaml
 Type: System.String
@@ -63,7 +82,7 @@ HelpMessage: ''
 
 ### -Enter
 
-{{ Fill Enter Description }}
+When specified, enters the browser into the current context, making it the default browser for subsequent page commands.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -84,7 +103,7 @@ HelpMessage: ''
 
 ### -Headless
 
-{{ Fill Headless Description }}
+Runs the browser in headless mode (without a visible window). This is the default behavior. Specify -Headless:$false to show the browser window.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -116,13 +135,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the browser instance (Microsoft.Playwright.IBrowser).
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- Requires that Start-Playwright has been called first to initialize the Playwright instance.
+- Use Stop-PlaywrightBrowser to close the browser when you're done.
+- Headless mode is useful for automated testing and web scraping scenarios.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Start-Playwright](Start-Playwright.md)
+[Stop-PlaywrightBrowser](Stop-PlaywrightBrowser.md)
+[Open-PlaywrightPage](Open-PlaywrightPage.md)
 

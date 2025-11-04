@@ -13,7 +13,7 @@ title: Set-PlaywrightLocatorSelect
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Interacts with checkbox, select, and file input elements using a Playwright locator.
 
 ## SYNTAX
 
@@ -27,24 +27,64 @@ Set-PlaywrightLocatorSelect [-Locator] <ILocator> [[-Action] <string>] [-Checked
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightLocatorSelect cmdlet provides multiple ways to interact with checkboxes, select elements, and file inputs. It supports checking (Check), unchecking (Uncheck), setting checked state (SetChecked), selecting options (SelectOption), and setting input files (SetInputFiles).
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Check a checkbox
 
-{{ Add example description here }}
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#agree"
+Set-PlaywrightLocatorSelect -Locator $locator -Action Check
+```
+
+Checks the checkbox with id "agree".
+
+### Example 2: Uncheck a checkbox
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#newsletter"
+Set-PlaywrightLocatorSelect -Locator $locator -Action Uncheck
+```
+
+Unchecks the newsletter checkbox.
+
+### Example 3: Set checkbox state
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#terms"
+Set-PlaywrightLocatorSelect -Locator $locator -Action SetChecked -CheckedState $true
+```
+
+Sets the checkbox to checked state.
+
+### Example 4: Select an option from dropdown
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#country"
+Set-PlaywrightLocatorSelect -Locator $locator -Action SelectOption -SelectOptions "USA"
+```
+
+Selects "USA" from the country dropdown.
+
+### Example 5: Set file input
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#upload"
+Set-PlaywrightLocatorSelect -Locator $locator -Action SetInputFiles -InputFiles "C:\path\to\file.txt"
+```
+
+Sets a file for the file input element.
 
 ## PARAMETERS
 
 ### -Action
 
-{{ Fill Action Description }}
+The action to perform. Valid values are: Check (default), Uncheck, SetChecked, SelectOption, SetInputFiles.
 
 ```yaml
 Type: System.String
@@ -65,7 +105,7 @@ HelpMessage: ''
 
 ### -CheckedState
 
-{{ Fill CheckedState Description }}
+Boolean value for the SetChecked action. True to check, false to uncheck.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -86,7 +126,7 @@ HelpMessage: ''
 
 ### -Force
 
-{{ Fill Force Description }}
+Forces the action even if the element is not actionable (bypasses actionability checks).
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -107,7 +147,7 @@ HelpMessage: ''
 
 ### -InputFiles
 
-{{ Fill InputFiles Description }}
+File path(s) for the SetInputFiles action.
 
 ```yaml
 Type: System.String
@@ -128,7 +168,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator object representing the element to interact with.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -149,7 +189,7 @@ HelpMessage: ''
 
 ### -SelectOptions
 
-{{ Fill SelectOptions Description }}
+The option value(s) to select for the SelectOption action.
 
 ```yaml
 Type: System.String
@@ -170,7 +210,7 @@ HelpMessage: ''
 
 ### -Timeout
 
-{{ Fill Timeout Description }}
+Maximum time to wait for the action to complete, in milliseconds.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -202,13 +242,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- Use Check/Uncheck for simple checkbox operations.
+- Use SetChecked when you need to conditionally set the checkbox state.
+- Use SelectOption for dropdown/select elements.
+- Use SetInputFiles for file upload inputs.
+- For more details, see the Playwright documentation.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Get-PlaywrightPageLocator](Get-PlaywrightPageLocator.md)
+[Set-PlaywrightLocatorInput](Set-PlaywrightLocatorInput.md)
 

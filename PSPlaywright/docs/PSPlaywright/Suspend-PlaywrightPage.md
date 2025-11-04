@@ -13,7 +13,7 @@ title: Suspend-PlaywrightPage
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Pauses script execution and opens the Playwright Inspector for debugging.
 
 ## SYNTAX
 
@@ -25,20 +25,24 @@ Suspend-PlaywrightPage [-Page <IPage>] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Suspend-PlaywrightPage cmdlet pauses the execution of your script and opens the Playwright Inspector tool. This is useful for debugging your automation scripts, allowing you to inspect the page state, step through actions, and troubleshoot issues.
 
 ## EXAMPLES
 
-### Example 1
-Suspends the execution of a Playwright page. (Implementation details may vary.)
-{{ Add example description here }}
+### Example 1: Pause execution for debugging
 
-Suspend-PlaywrightPage is intended to pause or suspend activity on a Playwright page. The exact behavior depends on the implementation. Use this cmdlet to temporarily halt page actions in automation scripts.
+```powershell
+Open-PlaywrightPageUrl -Url "https://example.com"
+Suspend-PlaywrightPage
+```
+
+Navigates to a URL and then pauses execution, opening the Playwright Inspector for debugging.
+
+## PARAMETERS
 
 ### -Page
 
@@ -79,19 +83,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- The Playwright Inspector window will open when this cmdlet is called.
+- Script execution will resume when you close the inspector or click the resume button.
+- This is primarily used for debugging and development purposes.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPageUrl](Open-PlaywrightPageUrl.md)
 

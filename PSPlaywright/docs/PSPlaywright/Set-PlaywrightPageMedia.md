@@ -13,7 +13,7 @@ title: Set-PlaywrightPageMedia
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Emulates media types and color schemes for the page.
 
 ## SYNTAX
 
@@ -26,24 +26,35 @@ Set-PlaywrightPageMedia [[-Media] <Media>] [[-ColorScheme] <ColorScheme>] [-Page
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightPageMedia cmdlet allows you to emulate different media types (screen, print) and color schemes (light, dark, no-preference) for testing responsive designs and CSS media queries.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Emulate print media
 
-{{ Add example description here }}
+```powershell
+Set-PlaywrightPageMedia -Media Print
+```
+
+Emulates print media for testing print stylesheets.
+
+### Example 2: Emulate dark color scheme
+
+```powershell
+Set-PlaywrightPageMedia -ColorScheme Dark
+```
+
+Emulates dark mode to test dark theme CSS.
 
 ## PARAMETERS
 
 ### -ColorScheme
 
-{{ Fill ColorScheme Description }}
+The color scheme to emulate. Valid values are Light, Dark, or NoPreference.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Playwright.ColorScheme]
@@ -64,7 +75,7 @@ HelpMessage: ''
 
 ### -Media
 
-{{ Fill Media Description }}
+The media type to emulate. Valid values are Screen, Print, or Null.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Playwright.Media]
@@ -85,7 +96,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -115,19 +126,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This is useful for testing responsive designs and CSS media queries.
+- Changes take effect immediately and trigger any relevant CSS media query changes.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Set-PlaywrightPageViewportSize](Set-PlaywrightPageViewportSize.md)
 

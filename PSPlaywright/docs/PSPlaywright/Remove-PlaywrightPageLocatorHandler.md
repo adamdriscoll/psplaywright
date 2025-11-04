@@ -13,7 +13,7 @@ title: Remove-PlaywrightPageLocatorHandler
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Removes a previously registered locator handler from the page.
 
 ## SYNTAX
 
@@ -25,24 +25,28 @@ Remove-PlaywrightPageLocatorHandler [-Locator] <ILocator> [-Page <IPage>] [<Comm
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Remove-PlaywrightPageLocatorHandler cmdlet removes a locator handler that was previously registered on the page. Locator handlers are used to handle specific UI elements or conditions during automation.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a locator handler
 
-{{ Add example description here }}
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector ".modal-close"
+Remove-PlaywrightPageLocatorHandler -Locator $locator
+```
+
+Removes the locator handler for the specified locator.
 
 ## PARAMETERS
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The locator for which to remove the handler.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -63,7 +67,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -91,21 +95,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Playwright.IPage
+### Microsoft.Playwright.ILocator
 
-{{ Fill in the Description }}
+You can pipe a locator object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- Locator handlers are typically used to automatically handle popups, modals, or other dynamic UI elements.
+- This cmdlet is used to clean up handlers when they are no longer needed.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Get-PlaywrightPageLocator](Get-PlaywrightPageLocator.md)
 

@@ -13,7 +13,7 @@ title: Set-PlaywrightPageDragAndDrop
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Performs a drag and drop operation from a source element to a target element.
 
 ## SYNTAX
 
@@ -26,24 +26,27 @@ Set-PlaywrightPageDragAndDrop [-SourceSelector] <string> [-TargetSelector] <stri
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightPageDragAndDrop cmdlet simulates a drag and drop operation by dragging an element from the source selector to the target selector. This is useful for testing drag and drop functionality in web applications.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Drag and drop an element
 
-{{ Add example description here }}
+```powershell
+Set-PlaywrightPageDragAndDrop -SourceSelector "#draggable" -TargetSelector "#dropzone"
+```
+
+Drags the element with id "draggable" and drops it onto the element with id "dropzone".
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -64,7 +67,7 @@ HelpMessage: ''
 
 ### -SourceSelector
 
-{{ Fill SourceSelector Description }}
+The CSS selector of the element to drag from.
 
 ```yaml
 Type: System.String
@@ -85,7 +88,7 @@ HelpMessage: ''
 
 ### -TargetSelector
 
-{{ Fill TargetSelector Description }}
+The CSS selector of the element to drop onto.
 
 ```yaml
 Type: System.String
@@ -115,19 +118,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- Both the source and target elements must be visible and interactable.
+- The drag and drop operation is performed as if a user were dragging with a mouse.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Get-PlaywrightPageLocator](Get-PlaywrightPageLocator.md)
 

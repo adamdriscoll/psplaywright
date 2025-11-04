@@ -13,7 +13,7 @@ title: Stop-Playwright
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Stops and disposes of the Playwright instance and cleans up resources.
 
 ## SYNTAX
 
@@ -25,18 +25,21 @@ Stop-Playwright [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Stop-Playwright cmdlet stops the Playwright instance in the current context and cleans up all associated resources. This should be called when you're finished with browser automation to properly dispose of resources.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Stop Playwright
 
-{{ Add example description here }}
+```powershell
+Stop-Playwright
+```
+
+This command stops the Playwright instance in the current context and releases all resources.
 
 ## PARAMETERS
 
@@ -53,13 +56,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Void
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This cmdlet will throw an error if no Playwright instance is found in the current context.
+- Always call this cmdlet when you're done with browser automation to ensure proper resource cleanup.
+- Any open browsers should be closed before calling this cmdlet.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Start-Playwright](Start-Playwright.md)
+[Stop-PlaywrightBrowser](Stop-PlaywrightBrowser.md)
 

@@ -13,7 +13,7 @@ title: Start-Playwright
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Initializes and starts a Playwright instance for browser automation.
 
 ## SYNTAX
 
@@ -25,24 +25,35 @@ Start-Playwright [-PassThru] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Start-Playwright cmdlet creates and initializes a new Playwright instance in the current context. This is typically the first command you run when using PSPlaywright to automate web browsers. The Playwright instance must be started before you can launch any browsers.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Start Playwright without output
 
-{{ Add example description here }}
+```powershell
+Start-Playwright
+```
+
+This command starts a Playwright instance without returning the instance object.
+
+### Example 2: Start Playwright and capture the instance
+
+```powershell
+$playwright = Start-Playwright -PassThru
+```
+
+This command starts a Playwright instance and returns the instance object for use in subsequent commands.
 
 ## PARAMETERS
 
 ### -PassThru
 
-{{ Fill PassThru Description }}
+When specified, returns the Playwright instance object. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -74,13 +85,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+When the PassThru parameter is specified, returns the Playwright instance object (Microsoft.Playwright.IPlaywright).
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This cmdlet must be called before starting any browsers with Start-PlaywrightBrowser.
+- If a Playwright instance is already started in the current context, this cmdlet will throw an error.
+- Use Stop-Playwright to clean up resources when you're done with browser automation.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Stop-Playwright](Stop-Playwright.md)
+[Start-PlaywrightBrowser](Start-PlaywrightBrowser.md)
 

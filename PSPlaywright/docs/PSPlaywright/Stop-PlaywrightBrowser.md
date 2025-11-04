@@ -13,7 +13,7 @@ title: Stop-PlaywrightBrowser
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Closes a Playwright browser instance.
 
 ## SYNTAX
 
@@ -25,24 +25,37 @@ Stop-PlaywrightBrowser [-Browser <IBrowser>] [-WhatIf] [-Confirm] [<CommonParame
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Stop-PlaywrightBrowser cmdlet closes a browser instance that was launched with Start-PlaywrightBrowser. This will close all pages and contexts within the browser.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Close a browser instance
 
-{{ Add example description here }}
+```powershell
+$browser = Start-PlaywrightBrowser
+# ... perform automation ...
+Stop-PlaywrightBrowser -Browser $browser
+```
+
+Closes the specified browser instance.
+
+### Example 2: Close browser from pipeline
+
+```powershell
+Start-PlaywrightBrowser | Stop-PlaywrightBrowser
+```
+
+Closes the browser instance passed through the pipeline.
 
 ## PARAMETERS
 
 ### -Browser
 
-{{ Fill Browser Description }}
+The browser instance to close. If not specified, the browser from the current context will be used.
 
 ```yaml
 Type: Microsoft.Playwright.IBrowser
@@ -116,19 +129,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IBrowser
 
-{{ Fill in the Description }}
+You can pipe a browser instance to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Void
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This cmdlet supports ShouldProcess, so you can use -WhatIf and -Confirm parameters.
+- Closing a browser will automatically close all pages and contexts within it.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Start-PlaywrightBrowser](Start-PlaywrightBrowser.md)
+[Stop-Playwright](Stop-Playwright.md)
 

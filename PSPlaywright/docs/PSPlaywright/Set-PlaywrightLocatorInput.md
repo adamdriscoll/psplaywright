@@ -13,7 +13,7 @@ title: Set-PlaywrightLocatorInput
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Interacts with input elements using a Playwright locator (fill, clear, press keys).
 
 ## SYNTAX
 
@@ -26,24 +26,55 @@ Set-PlaywrightLocatorInput [-Locator] <ILocator> [[-Action] <string>] [-Value <s
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Set-PlaywrightLocatorInput cmdlet provides multiple ways to interact with input elements. It supports filling text (Fill), clearing input (Clear), pressing individual keys (Press), and typing text character by character (PressSequentially).
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Fill an input field
 
-{{ Add example description here }}
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#username"
+Set-PlaywrightLocatorInput -Locator $locator -Action Fill -Value "testuser"
+```
+
+Fills the username field with "testuser".
+
+### Example 2: Clear an input field
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#search"
+Set-PlaywrightLocatorInput -Locator $locator -Action Clear
+```
+
+Clears the search input field.
+
+### Example 3: Press Enter key
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#password"
+Set-PlaywrightLocatorInput -Locator $locator -Action Press -Value "Enter"
+```
+
+Presses the Enter key on the password field.
+
+### Example 4: Type text with delay
+
+```powershell
+$locator = Get-PlaywrightPageLocator -Selector "#email"
+Set-PlaywrightLocatorInput -Locator $locator -Action PressSequentially -Value "test@example.com" -Delay 100
+```
+
+Types the email address character by character with a 100ms delay between each character.
 
 ## PARAMETERS
 
 ### -Action
 
-{{ Fill Action Description }}
+The action to perform. Valid values are: Fill (default), Clear, Press, PressSequentially.
 
 ```yaml
 Type: System.String
@@ -64,7 +95,7 @@ HelpMessage: ''
 
 ### -Delay
 
-{{ Fill Delay Description }}
+Delay in milliseconds between key presses. Used with Press and PressSequentially actions.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -85,7 +116,7 @@ HelpMessage: ''
 
 ### -Force
 
-{{ Fill Force Description }}
+Forces the action even if the element is not actionable (bypasses actionability checks).
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -106,7 +137,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator object representing the element to interact with.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -127,7 +158,7 @@ HelpMessage: ''
 
 ### -Timeout
 
-{{ Fill Timeout Description }}
+Maximum time to wait for the action to complete, in milliseconds.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -148,7 +179,7 @@ HelpMessage: ''
 
 ### -Value
 
-{{ Fill Value Description }}
+The text value or key to input. Required for Fill, Press, and PressSequentially actions.
 
 ```yaml
 Type: System.String
@@ -180,13 +211,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- Use Fill for quickly setting input values.
+- Use PressSequentially to simulate realistic typing with delays.
+- Use Press for special keys like Enter, Tab, Escape, etc.
+- For more details, see https://playwright.dev/dotnet/docs/api/class-locator
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Get-PlaywrightPageLocator](Get-PlaywrightPageLocator.md)
+[Set-PlaywrightLocatorSelect](Set-PlaywrightLocatorSelect.md)
 

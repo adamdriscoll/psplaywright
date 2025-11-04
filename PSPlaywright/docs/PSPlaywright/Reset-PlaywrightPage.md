@@ -13,7 +13,7 @@ title: Reset-PlaywrightPage
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Reloads the current page in the browser.
 
 ## SYNTAX
 
@@ -25,24 +25,27 @@ Reset-PlaywrightPage [-Page <IPage>] [<CommonParameters>]
 
 ## ALIASES
 
-This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The Reset-PlaywrightPage cmdlet reloads the current page in the browser, similar to pressing the refresh button. This is useful when you need to reset the page state or load updated content.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Reload the current page
 
-{{ Add example description here }}
+```powershell
+Reset-PlaywrightPage
+```
+
+Reloads the current page in the browser.
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+The page object to perform the operation on. If not specified, uses the page from the current context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +75,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+You can pipe a page object to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+This cmdlet does not return any output.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+- This cmdlet waits for the page to fully reload before returning.
+- Any unsaved data on the page will be lost.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Open-PlaywrightPageUrl](Open-PlaywrightPageUrl.md)
 
