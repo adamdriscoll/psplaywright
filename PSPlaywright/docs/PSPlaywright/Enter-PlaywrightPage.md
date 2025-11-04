@@ -13,7 +13,7 @@ title: Enter-PlaywrightPage
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Enters a Playwright page, setting it as the active page context.
 
 ## SYNTAX
 
@@ -30,19 +30,25 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Enter-PlaywrightPage` to set the specified Playwright page (`IPage`) as the active page context. This is useful for switching between multiple pages in your automation scripts.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Set the active page context to a specific page instance:
+
+```powershell
+$page = Open-PlaywrightPage -Browser $browser
+Enter-PlaywrightPage -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+The Playwright page (`IPage`) instance to set as the active context.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +78,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the page object that was entered as the active context.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for managing multiple page sessions in complex automation scenarios.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage](https://playwright.dev/dotnet/docs/api/class-page)
+- [Playwright Documentation](https://playwright.dev/)
 

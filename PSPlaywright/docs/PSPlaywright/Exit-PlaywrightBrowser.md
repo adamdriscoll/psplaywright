@@ -13,7 +13,7 @@ title: Exit-PlaywrightBrowser
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Exits the current Playwright browser context, popping it from the context stack without closing the browser.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Exit-PlaywrightBrowser` to remove the current browser from the active context stack. This does not close the browser, but allows you to switch back to a previous browser context in your automation scripts.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Exit the current browser context:
+
+```powershell
+Exit-PlaywrightBrowser -Browser $browser
+```
 
 ## PARAMETERS
 
 ### -Browser
 
-{{ Fill Browser Description }}
+The Playwright browser (`IBrowser`) instance to exit from the context stack. If not provided, the current browser context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IBrowser
@@ -72,19 +77,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IBrowser
 
-{{ Fill in the Description }}
+Accepts a Playwright `IBrowser` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of exiting the browser context. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for managing multiple browser sessions and switching contexts in complex automation scenarios.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IBrowser](https://playwright.dev/dotnet/docs/api/class-browser)
+- [Playwright Documentation](https://playwright.dev/)
 

@@ -13,7 +13,7 @@ title: Get-PlaywrightPageJavascriptHandle
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Gets a handle to a JavaScript object or value on a Playwright page by evaluating an expression.
 
 ## SYNTAX
 
@@ -31,19 +31,30 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPageJavascriptHandle` to evaluate a JavaScript expression on a Playwright page and return a handle to the resulting object or value. This is useful for interacting with complex objects or DOM nodes in automated tests.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Get a handle to the document body:
+
+```powershell
+$handle = Get-PlaywrightPageJavascriptHandle -Expression "document.body" -Page $page
+```
+
+Get a handle to a custom object:
+
+```powershell
+$handle = Get-PlaywrightPageJavascriptHandle -Expression "window.myObject" -Page $page
+```
 
 ## PARAMETERS
 
 ### -Argument
 
-{{ Fill Argument Description }}
+An optional argument to pass to the evaluated JavaScript expression.
 
 ```yaml
 Type: System.Object
@@ -64,7 +75,7 @@ HelpMessage: ''
 
 ### -Expression
 
-{{ Fill Expression Description }}
+The JavaScript expression to evaluate on the page. Required.
 
 ```yaml
 Type: System.String
@@ -85,7 +96,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to evaluate the expression on. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -115,19 +126,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns a handle to the JavaScript object or value as a Playwright handle object.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for advanced interactions with page objects and DOM nodes.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.EvaluateHandleAsync](https://playwright.dev/dotnet/docs/api/class-page#pageevaluatehandle)
+- [Playwright Documentation](https://playwright.dev/)
 

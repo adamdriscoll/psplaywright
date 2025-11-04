@@ -13,7 +13,7 @@ title: Assert-PlaywrightLocator
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Asserts various conditions on a Playwright locator, such as visibility, state, text, or attribute values.
 
 ## SYNTAX
 
@@ -91,19 +91,39 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Assert-PlaywrightLocator` to verify the state or properties of a Playwright locator. This command supports multiple assertion types, including visibility, checked state, enabled/disabled, text, value, and attributes. If the assertion fails, an error is thrown.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Assert that a button is visible and enabled:
+
+```powershell
+$locator = $page.Locator("button#submit")
+Assert-PlaywrightLocator -Locator $locator -IsVisible -IsEnabled
+```
+
+Assert that a checkbox is checked:
+
+```powershell
+$locator = $page.Locator("input[type='checkbox']")
+Assert-PlaywrightLocator -Locator $locator -IsChecked
+```
+
+Assert that a label has specific text:
+
+```powershell
+$locator = $page.Locator("label#status")
+Assert-PlaywrightLocator -Locator $locator -HasText "Success"
+```
 
 ## PARAMETERS
 
 ### -AttributeName
 
-{{ Fill AttributeName Description }}
+The name of the attribute to assert on the locator.
 
 ```yaml
 Type: System.String
@@ -124,7 +144,7 @@ HelpMessage: ''
 
 ### -AttributeValue
 
-{{ Fill AttributeValue Description }}
+The expected value of the attribute to assert.
 
 ```yaml
 Type: System.String
@@ -145,7 +165,7 @@ HelpMessage: ''
 
 ### -HasText
 
-{{ Fill HasText Description }}
+The expected text content of the locator.
 
 ```yaml
 Type: System.String
@@ -166,7 +186,7 @@ HelpMessage: ''
 
 ### -HasValue
 
-{{ Fill HasValue Description }}
+The expected value of the locator (e.g., input value).
 
 ```yaml
 Type: System.String
@@ -187,7 +207,7 @@ HelpMessage: ''
 
 ### -IsChecked
 
-{{ Fill IsChecked Description }}
+Assert that the locator is checked (e.g., checkbox or radio button).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -208,7 +228,7 @@ HelpMessage: ''
 
 ### -IsDisabled
 
-{{ Fill IsDisabled Description }}
+Assert that the locator is disabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -229,7 +249,7 @@ HelpMessage: ''
 
 ### -IsEditable
 
-{{ Fill IsEditable Description }}
+Assert that the locator is editable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -250,7 +270,7 @@ HelpMessage: ''
 
 ### -IsEmpty
 
-{{ Fill IsEmpty Description }}
+Assert that the locator is empty (no content).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -271,7 +291,7 @@ HelpMessage: ''
 
 ### -IsEnabled
 
-{{ Fill IsEnabled Description }}
+Assert that the locator is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -292,7 +312,7 @@ HelpMessage: ''
 
 ### -IsFocused
 
-{{ Fill IsFocused Description }}
+Assert that the locator is focused.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -313,7 +333,7 @@ HelpMessage: ''
 
 ### -IsHidden
 
-{{ Fill IsHidden Description }}
+Assert that the locator is hidden.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -334,7 +354,7 @@ HelpMessage: ''
 
 ### -IsVisible
 
-{{ Fill IsVisible Description }}
+Assert that the locator is visible.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -355,7 +375,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator (`ILocator`) to assert against. This identifies the element or set of elements to check.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -385,19 +405,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.ILocator
 
-{{ Fill in the Description }}
+Accepts a Playwright `ILocator` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the assertion. Throws an error if the assertion fails.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for validating UI state and properties in automated tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.ILocator](https://playwright.dev/dotnet/docs/api/class-locator)
+- [Playwright Documentation](https://playwright.dev/)
 

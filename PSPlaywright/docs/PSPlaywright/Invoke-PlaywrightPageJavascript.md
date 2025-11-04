@@ -13,7 +13,7 @@ title: Invoke-PlaywrightPageJavascript
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Invokes a JavaScript expression on a Playwright page and returns the result.
 
 ## SYNTAX
 
@@ -31,19 +31,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Invoke-PlaywrightPageJavascript` to evaluate a JavaScript expression on a Playwright page. You can pass an optional argument to the expression. The result of the evaluation is returned to PowerShell.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Evaluate a JavaScript expression on the page:
+
+```powershell
+$result = Invoke-PlaywrightPageJavascript -Expression "document.title" -Page $page
+```
 
 ## PARAMETERS
 
 ### -Argument
 
-{{ Fill Argument Description }}
+An optional argument to pass to the evaluated JavaScript expression.
 
 ```yaml
 Type: System.Object
@@ -64,7 +69,7 @@ HelpMessage: ''
 
 ### -Expression
 
-{{ Fill Expression Description }}
+The JavaScript expression to evaluate on the page. Required.
 
 ```yaml
 Type: System.String
@@ -85,7 +90,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to evaluate the expression on. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -115,19 +120,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the JavaScript evaluation.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for advanced page interactions and extracting data from the DOM.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.EvaluateAsync](https://playwright.dev/dotnet/docs/api/class-page#pageevaluate)
+- [Playwright Documentation](https://playwright.dev/)
 

@@ -13,7 +13,7 @@ title: Get-PlaywrightPageTitle
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Gets the title of the current Playwright page.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPageTitle` to retrieve the title of the current Playwright page. This is useful for validation, reporting, or debugging in automated tests.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Get the title of the current page:
+
+```powershell
+$title = Get-PlaywrightPageTitle -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to get the title from. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +77,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the title of the page as a string.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for validating page navigation and content in automated UI tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.TitleAsync](https://playwright.dev/dotnet/docs/api/class-page#pagetitle)
+- [Playwright Documentation](https://playwright.dev/)
 

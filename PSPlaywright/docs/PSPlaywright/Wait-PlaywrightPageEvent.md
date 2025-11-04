@@ -13,7 +13,7 @@ title: Wait-PlaywrightPageEvent
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Waits for a specific event to occur on a Playwright page, such as requests, responses, URL changes, function evaluations, load states, and more.
 
 ## SYNTAX
 
@@ -32,19 +32,35 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Wait-PlaywrightPageEvent allows you to pause execution until a specified event occurs on a Playwright page. Supported events include:
+
+- Request: Waits for a network request matching a URL or predicate.
+- Response: Waits for a network response matching a URL or predicate.
+- URL: Waits for the page to navigate to a specific URL.
+- Function: Waits for a JavaScript function to return true.
+- LoadState: Waits for the page to reach a specific load state.
+- Popup, Download, ConsoleMessage, FileChooser, RequestFinished, WebSocket, Worker: Waits for these respective events.
+
+Use the appropriate parameters to specify event details. The cmdlet uses Playwright's async wait methods and blocks until the event occurs or a timeout is reached.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+Wait for a page to reach the 'load' state after navigation:
+
+```powershell
+$browser = Start-PlaywrightBrowser -Headless
+$page = Open-PlaywrightPage -Browser $browser
+$null = $page | Wait-PlaywrightPageEvent -EventType 'LoadState' -State ([Microsoft.Playwright.LoadState]::Load)
+Stop-PlaywrightBrowser -Browser $browser
+```
 
 ## PARAMETERS
 
 ### -Argument
 
-{{ Fill Argument Description }}
+An argument to pass to the JavaScript function when using the 'Function' event type.
 
 ```yaml
 Type: System.Object
@@ -65,7 +81,7 @@ HelpMessage: ''
 
 ### -EventType
 
-{{ Fill EventType Description }}
+Specifies the type of event to wait for. Valid values: Request, Response, URL, Function, LoadState, Popup, Download, ConsoleMessage, FileChooser, RequestFinished, WebSocket, Worker.
 
 ```yaml
 Type: System.String
@@ -86,7 +102,7 @@ HelpMessage: ''
 
 ### -Expression
 
-{{ Fill Expression Description }}
+JavaScript expression to evaluate for the 'Function' event type.
 
 ```yaml
 Type: System.String
@@ -107,7 +123,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+The Playwright IPage object to operate on. Can be provided via pipeline.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -128,7 +144,7 @@ HelpMessage: ''
 
 ### -ResponseUrlOrPredicate
 
-{{ Fill ResponseUrlOrPredicate Description }}
+URL or predicate to match for the 'Response' event type.
 
 ```yaml
 Type: System.String
@@ -149,7 +165,7 @@ HelpMessage: ''
 
 ### -State
 
-{{ Fill State Description }}
+The load state to wait for when using the 'LoadState' event type. Example: [Microsoft.Playwright.LoadState]::Load
 
 ```yaml
 Type: Microsoft.Playwright.LoadState
@@ -170,7 +186,7 @@ HelpMessage: ''
 
 ### -Url
 
-{{ Fill Url Description }}
+The URL to wait for when using the 'URL' event type.
 
 ```yaml
 Type: System.String
@@ -191,7 +207,7 @@ HelpMessage: ''
 
 ### -UrlOrPredicate
 
-{{ Fill UrlOrPredicate Description }}
+URL or predicate to match for the 'Request' event type.
 
 ```yaml
 Type: System.String
@@ -221,19 +237,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright IPage object.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the awaited event, or $null if not applicable.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This cmdlet wraps Playwright's asynchronous event waiting methods for use in PowerShell scripts.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Playwright .NET API Reference](https://playwright.dev/dotnet/docs/api/class-page)
 

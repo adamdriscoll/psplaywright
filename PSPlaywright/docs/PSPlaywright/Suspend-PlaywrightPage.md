@@ -35,36 +35,43 @@ This cmdlet has the following aliases,
 ## EXAMPLES
 
 ### Example 1
-
+Suspends the execution of a Playwright page. (Implementation details may vary.)
 {{ Add example description here }}
 
-## PARAMETERS
+Suspend-PlaywrightPage is intended to pause or suspend activity on a Playwright page. The exact behavior depends on the implementation. Use this cmdlet to temporarily halt page actions in automation scripts.
 
 ### -Page
 
-{{ Fill Page Description }}
+Suspend a Playwright page:
+
+```powershell
+$browser = Start-PlaywrightBrowser -Headless
+$page = Open-PlaywrightPage -Browser $browser
+$null = $page | Suspend-PlaywrightPage
+Stop-PlaywrightBrowser -Browser $browser
+```
 
 ```yaml
 Type: Microsoft.Playwright.IPage
-DefaultValue: ''
+The Playwright IPage object to suspend. Can be provided via pipeline.
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: (All)
+None
   Position: Named
   IsRequired: false
   ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
+Accepts a Playwright IPage object.
   ValueFromRemainingArguments: false
 DontShow: false
 AcceptedValues: []
-HelpMessage: ''
+Returns $null. (No output is expected.)
 ```
 
-### CommonParameters
+This cmdlet is a placeholder. Implementation may be added in future versions.
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+[Playwright .NET API Reference](https://playwright.dev/dotnet/docs/api/class-page)
 -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
 [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 

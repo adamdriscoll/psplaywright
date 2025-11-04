@@ -13,7 +13,7 @@ title: Add-PlaywrightPageLocatorHandler
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Adds a handler script to a Playwright locator for custom event or action handling.
 
 ## SYNTAX
 
@@ -31,19 +31,26 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Add-PlaywrightPageLocatorHandler` to attach a custom handler to a Playwright locator. The handler is a PowerShell script block that will be invoked when the locator is triggered, allowing for custom automation or validation logic.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Attach a handler to a locator that logs when an element is clicked:
+
+```powershell
+$locator = $page.Locator("button#submit")
+$handler = { param($loc) Write-Host "Button clicked!" }
+Add-PlaywrightPageLocatorHandler -Locator $locator -Handler $handler -Page $page
+```
 
 ## PARAMETERS
 
 ### -Handler
 
-{{ Fill Handler Description }}
+The PowerShell script block to execute when the locator is triggered. The locator instance is passed as a parameter to the handler.
 
 ```yaml
 Type: System.Management.Automation.ScriptBlock
@@ -64,7 +71,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator (`ILocator`) to attach the handler to. This identifies the element or set of elements to monitor.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -85,7 +92,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) containing the locator. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -115,19 +122,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the handler attachment. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for custom automation, logging, or validation when interacting with page elements.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.ILocator](https://playwright.dev/dotnet/docs/api/class-locator)
+- [Playwright Documentation](https://playwright.dev/)
 

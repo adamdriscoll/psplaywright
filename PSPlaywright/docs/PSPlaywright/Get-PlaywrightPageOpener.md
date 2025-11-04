@@ -13,7 +13,7 @@ title: Get-PlaywrightPageOpener
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Gets the opener page for a Playwright page, if it was opened by another page.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPageOpener` to retrieve the page that opened the current Playwright page, if available. This is useful for tracking navigation flows or parent-child page relationships in automated tests.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Get the opener page for the current page:
+
+```powershell
+$opener = Get-PlaywrightPageOpener -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to get the opener for. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +77,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the opener page object, or `$null` if there is no opener.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for handling popups and navigation flows in browser automation.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.OpenerAsync](https://playwright.dev/dotnet/docs/api/class-page#pageopener)
+- [Playwright Documentation](https://playwright.dev/)
 

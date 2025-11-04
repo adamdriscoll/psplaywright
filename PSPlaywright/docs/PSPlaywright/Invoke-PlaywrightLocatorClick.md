@@ -13,7 +13,7 @@ title: Invoke-PlaywrightLocatorClick
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Invokes click, double-click, or tap actions on a Playwright locator.
 
 ## SYNTAX
 
@@ -32,19 +32,30 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Invoke-PlaywrightLocatorClick` to perform click, double-click, or tap actions on a Playwright locator. You can specify the action type, mouse button, click count, delay, force, coordinates, and more.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Click a button:
+
+```powershell
+Invoke-PlaywrightLocatorClick -Locator $locator -Action "Click"
+```
+
+Double-click an element:
+
+```powershell
+Invoke-PlaywrightLocatorClick -Locator $locator -Action "DblClick"
+```
 
 ## PARAMETERS
 
 ### -Action
 
-{{ Fill Action Description }}
+The type of action to perform: "Click", "DblClick", or "Tap". Default is "Click".
 
 ```yaml
 Type: System.String
@@ -65,7 +76,7 @@ HelpMessage: ''
 
 ### -Button
 
-{{ Fill Button Description }}
+The mouse button to use: "left", "right", or "middle".
 
 ```yaml
 Type: System.String
@@ -86,7 +97,7 @@ HelpMessage: ''
 
 ### -ClickCount
 
-{{ Fill ClickCount Description }}
+Number of times to click. Default is 1.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -107,7 +118,7 @@ HelpMessage: ''
 
 ### -Delay
 
-{{ Fill Delay Description }}
+Delay in milliseconds between actions.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -128,7 +139,7 @@ HelpMessage: ''
 
 ### -Force
 
-{{ Fill Force Description }}
+Force the action, bypassing checks.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -149,7 +160,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator (`ILocator`) to perform the action on.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -170,7 +181,7 @@ HelpMessage: ''
 
 ### -Modifiers
 
-{{ Fill Modifiers Description }}
+Keyboard modifiers to use during the action.
 
 ```yaml
 Type: Microsoft.Playwright.KeyboardModifier[]
@@ -191,7 +202,7 @@ HelpMessage: ''
 
 ### -Timeout
 
-{{ Fill Timeout Description }}
+Timeout for the action in milliseconds.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -212,7 +223,7 @@ HelpMessage: ''
 
 ### -Trial
 
-{{ Fill Trial Description }}
+If true, runs the action in trial mode without performing it.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -233,7 +244,7 @@ HelpMessage: ''
 
 ### -X
 
-{{ Fill X Description }}
+X coordinate for the action.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -254,7 +265,7 @@ HelpMessage: ''
 
 ### -Y
 
-{{ Fill Y Description }}
+Y coordinate for the action.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -286,13 +297,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the click action. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for simulating user interactions in automated UI tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.ILocator.ClickAsync](https://playwright.dev/dotnet/docs/api/class-locator#locatorclick)
+- [Playwright Documentation](https://playwright.dev/)
 

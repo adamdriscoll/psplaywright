@@ -13,7 +13,7 @@ title: Invoke-PlaywrightLocatorAdvanced
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Performs advanced actions on a Playwright locator, such as drag-and-drop, screenshot, scroll, dispatch event, wait, evaluate, and more.
 
 ## SYNTAX
 
@@ -94,19 +94,36 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Invoke-PlaywrightLocatorAdvanced` to perform advanced operations on a Playwright locator. Supported actions include drag-and-drop, taking screenshots, scrolling into view, dispatching events, waiting for state, evaluating JavaScript, and selecting text. Each action is triggered by a specific switch parameter.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Drag one element to another:
+
+```powershell
+Invoke-PlaywrightLocatorAdvanced -Locator $source -DragTo -TargetLocator $target
+```
+
+Take a screenshot of an element:
+
+```powershell
+Invoke-PlaywrightLocatorAdvanced -Locator $locator -Screenshot -Path "C:\output\element.png"
+```
+
+Scroll an element into view:
+
+```powershell
+Invoke-PlaywrightLocatorAdvanced -Locator $locator -ScrollIntoViewIfNeeded
+```
 
 ## PARAMETERS
 
 ### -AriaSnapshot
 
-{{ Fill AriaSnapshot Description }}
+Captures an ARIA snapshot of the locator for accessibility testing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -127,7 +144,7 @@ HelpMessage: ''
 
 ### -DispatchEvent
 
-{{ Fill DispatchEvent Description }}
+Dispatches a custom event of the specified type to the locator.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -148,7 +165,7 @@ HelpMessage: ''
 
 ### -DragTo
 
-{{ Fill DragTo Description }}
+Drags the locator to the target locator.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -169,7 +186,7 @@ HelpMessage: ''
 
 ### -EvalArg
 
-{{ Fill EvalArg Description }}
+Argument to pass to the evaluated JavaScript expression.
 
 ```yaml
 Type: System.Object
@@ -202,7 +219,7 @@ HelpMessage: ''
 
 ### -Evaluate
 
-{{ Fill Evaluate Description }}
+Evaluates a JavaScript expression on the locator.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -223,7 +240,7 @@ HelpMessage: ''
 
 ### -EvaluateAll
 
-{{ Fill EvaluateAll Description }}
+Evaluates a JavaScript expression on all matching locators.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -244,7 +261,7 @@ HelpMessage: ''
 
 ### -EvaluateHandle
 
-{{ Fill EvaluateHandle Description }}
+Evaluates a JavaScript expression and returns a handle to the result.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -265,7 +282,7 @@ HelpMessage: ''
 
 ### -EventInit
 
-{{ Fill EventInit Description }}
+Initialization object for the dispatched event.
 
 ```yaml
 Type: System.Object
@@ -286,7 +303,7 @@ HelpMessage: ''
 
 ### -EventType
 
-{{ Fill EventType Description }}
+Type of event to dispatch (e.g., 'click', 'input').
 
 ```yaml
 Type: System.String
@@ -307,7 +324,7 @@ HelpMessage: ''
 
 ### -Expression
 
-{{ Fill Expression Description }}
+JavaScript expression to evaluate.
 
 ```yaml
 Type: System.String
@@ -340,7 +357,7 @@ HelpMessage: ''
 
 ### -Locator
 
-{{ Fill Locator Description }}
+The Playwright locator (`ILocator`) to perform the action on.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -361,7 +378,7 @@ HelpMessage: ''
 
 ### -Path
 
-{{ Fill Path Description }}
+File path to save the screenshot.
 
 ```yaml
 Type: System.String
@@ -382,7 +399,7 @@ HelpMessage: ''
 
 ### -Screenshot
 
-{{ Fill Screenshot Description }}
+Takes a screenshot of the locator.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -403,7 +420,7 @@ HelpMessage: ''
 
 ### -ScrollIntoViewIfNeeded
 
-{{ Fill ScrollIntoViewIfNeeded Description }}
+Scrolls the locator into view if needed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -424,7 +441,7 @@ HelpMessage: ''
 
 ### -SelectText
 
-{{ Fill SelectText Description }}
+Selects the text content of the locator.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -445,7 +462,7 @@ HelpMessage: ''
 
 ### -State
 
-{{ Fill State Description }}
+State to wait for (e.g., 'visible', 'hidden', 'attached', 'detached').
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Playwright.WaitForSelectorState]
@@ -466,7 +483,7 @@ HelpMessage: ''
 
 ### -TargetLocator
 
-{{ Fill TargetLocator Description }}
+The target locator for drag-and-drop operations.
 
 ```yaml
 Type: Microsoft.Playwright.ILocator
@@ -487,7 +504,7 @@ HelpMessage: ''
 
 ### -Timeout
 
-{{ Fill Timeout Description }}
+Timeout for the operation in milliseconds.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -556,7 +573,7 @@ HelpMessage: ''
 
 ### -WaitFor
 
-{{ Fill WaitFor Description }}
+Waits for the locator to reach the specified state.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -588,13 +605,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the advanced locator action. Output type depends on the action performed.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for complex UI interactions and custom automation scenarios.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.ILocator](https://playwright.dev/dotnet/docs/api/class-locator)
+- [Playwright Documentation](https://playwright.dev/)
 

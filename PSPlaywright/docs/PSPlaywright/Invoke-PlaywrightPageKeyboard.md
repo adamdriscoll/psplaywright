@@ -13,7 +13,7 @@ title: Invoke-PlaywrightPageKeyboard
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Invokes keyboard actions on a Playwright page, such as typing, pressing, or sending key events.
 
 ## SYNTAX
 
@@ -54,19 +54,30 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Invoke-PlaywrightPageKeyboard` to simulate keyboard input on a Playwright page. You can type text, press keys, send key down/up events, or insert text directly.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Type text into an input:
+
+```powershell
+Invoke-PlaywrightPageKeyboard -Text "Hello World" -Page $page
+```
+
+Press the Enter key:
+
+```powershell
+Invoke-PlaywrightPageKeyboard -Key "Enter" -Page $page
+```
 
 ## PARAMETERS
 
 ### -DownKey
 
-{{ Fill DownKey Description }}
+The key to send a key down event for.
 
 ```yaml
 Type: System.String
@@ -87,7 +98,7 @@ HelpMessage: ''
 
 ### -InsertText
 
-{{ Fill InsertText Description }}
+Text to insert directly into the page.
 
 ```yaml
 Type: System.String
@@ -108,7 +119,7 @@ HelpMessage: ''
 
 ### -Key
 
-{{ Fill Key Description }}
+The key to press (e.g., "Enter", "Tab").
 
 ```yaml
 Type: System.String
@@ -129,7 +140,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to send keyboard actions to. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -150,7 +161,7 @@ HelpMessage: ''
 
 ### -Text
 
-{{ Fill Text Description }}
+Text to type into the page.
 
 ```yaml
 Type: System.String
@@ -171,7 +182,7 @@ HelpMessage: ''
 
 ### -UpKey
 
-{{ Fill UpKey Description }}
+The key to send a key up event for.
 
 ```yaml
 Type: System.String
@@ -201,19 +212,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the keyboard action. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for simulating user keyboard input in automated UI tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.Keyboard](https://playwright.dev/dotnet/docs/api/class-keyboard)
+- [Playwright Documentation](https://playwright.dev/)
 

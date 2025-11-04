@@ -13,7 +13,7 @@ title: Install-Playwright
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Installs Playwright and its required browser dependencies for use with PSPlaywright.
 
 ## SYNTAX
 
@@ -30,13 +30,18 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Install-Playwright` to install the Playwright library and its browser dependencies. This command ensures that Playwright is ready for use in your automation scripts. It runs an internal installation script that downloads and sets up the required components.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Install Playwright and its browsers:
+
+```powershell
+Install-Playwright
+```
 
 ## PARAMETERS
 
@@ -46,13 +51,16 @@ This cmdlet has the following aliases,
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the installation process. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command should be run once before using other Playwright commands in a new environment.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Playwright Installation Guide](https://playwright.dev/dotnet/docs/intro#installation)
 

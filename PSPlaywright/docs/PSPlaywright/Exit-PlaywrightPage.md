@@ -13,7 +13,7 @@ title: Exit-PlaywrightPage
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Exits the current Playwright page context, popping it from the context stack without closing the page.
 
 ## SYNTAX
 
@@ -30,13 +30,18 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Exit-PlaywrightPage` to remove the current page from the active context stack. This does not close the page, but allows you to switch back to a previous page context in your automation scripts.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Exit the current page context:
+
+```powershell
+Exit-PlaywrightPage
+```
 
 ## PARAMETERS
 
@@ -53,13 +58,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the page object that was exited from the active context, or a warning if no page was available.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for managing multiple page sessions and switching contexts in complex automation scenarios.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage](https://playwright.dev/dotnet/docs/api/class-page)
+- [Playwright Documentation](https://playwright.dev/)
 

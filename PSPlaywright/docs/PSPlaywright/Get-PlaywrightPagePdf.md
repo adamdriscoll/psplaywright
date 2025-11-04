@@ -13,7 +13,7 @@ title: Get-PlaywrightPagePdf
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Generates a PDF of the current Playwright page and saves it to the specified path.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPagePdf` to export the current Playwright page as a PDF file. Specify the output path for the PDF. This is useful for archiving, reporting, or sharing page content in a portable format.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Save the current page as a PDF:
+
+```powershell
+Get-PlaywrightPagePdf -Page $page -Path "C:\output\page.pdf"
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to generate the PDF from. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -63,7 +68,7 @@ HelpMessage: ''
 
 ### -Path
 
-{{ Fill Path Description }}
+The file path where the generated PDF will be saved. Required.
 
 ```yaml
 Type: System.String
@@ -93,19 +98,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the PDF generation. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for exporting page content for archiving or sharing.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.PdfAsync](https://playwright.dev/dotnet/docs/api/class-page#pagepdf)
+- [Playwright Documentation](https://playwright.dev/)
 

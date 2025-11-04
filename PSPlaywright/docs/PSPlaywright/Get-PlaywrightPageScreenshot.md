@@ -13,7 +13,7 @@ title: Get-PlaywrightPageScreenshot
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Captures a screenshot of the current Playwright page and saves it to the specified path.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPageScreenshot` to capture a screenshot of the current Playwright page. Specify the output path for the image file. This is useful for visual regression testing, reporting, or archiving page states.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Save a screenshot of the current page:
+
+```powershell
+Get-PlaywrightPageScreenshot -Page $page -Path "C:\output\page.png"
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to capture the screenshot from. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -63,7 +68,7 @@ HelpMessage: ''
 
 ### -Path
 
-{{ Fill Path Description }}
+The file path where the screenshot image will be saved. Required.
 
 ```yaml
 Type: System.String
@@ -93,19 +98,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the screenshot operation. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for visual regression testing and archiving page states.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.ScreenshotAsync](https://playwright.dev/dotnet/docs/api/class-page#pagescreenshot)
+- [Playwright Documentation](https://playwright.dev/)
 

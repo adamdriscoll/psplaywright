@@ -13,7 +13,7 @@ title: Get-PlaywrightPageContent
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Gets the HTML content of a Playwright page.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Get-PlaywrightPageContent` to retrieve the full HTML content of the current Playwright page. This is useful for inspecting the DOM, debugging, or extracting page markup in automated tests.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Get the HTML content of the current page:
+
+```powershell
+$html = Get-PlaywrightPageContent -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to get the content from. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +77,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the HTML content of the page as a string.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for extracting or inspecting the DOM in automated UI tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.ContentAsync](https://playwright.dev/dotnet/docs/api/class-page#pagecontent)
+- [Playwright Documentation](https://playwright.dev/)
 

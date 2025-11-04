@@ -13,7 +13,7 @@ title: Add-PlaywrightPageInitScript
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Adds a JavaScript initialization script to a Playwright page before any other scripts run.
 
 ## SYNTAX
 
@@ -30,19 +30,25 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Add-PlaywrightPageInitScript` to inject custom JavaScript into a Playwright page. This script will be executed before any other scripts on the page, allowing you to set up global variables, override functions, or perform other setup tasks. The command can be used with an existing page object or the current context.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Inject a script that sets a global variable before page scripts execute:
+
+```powershell
+$script = "window.myGlobalVar = 'Hello, Playwright!';"
+Add-PlaywrightPageInitScript -Script $script -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to inject the initialization script into. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -63,7 +69,7 @@ HelpMessage: ''
 
 ### -Script
 
-{{ Fill Script Description }}
+The JavaScript code to inject into the page. This script will run before any other scripts on the page.
 
 ```yaml
 Type: System.String
@@ -93,19 +99,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the initialization script injection. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for setting up the page environment, mocking APIs, or overriding browser features before the page loads any content.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+See also:
+- [Microsoft.Playwright.IPage.AddInitScriptAsync](https://playwright.dev/dotnet/docs/api/class-page#pageaddinitscript)
+- [Playwright Documentation](https://playwright.dev/)
 

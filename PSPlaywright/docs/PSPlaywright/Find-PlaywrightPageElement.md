@@ -13,7 +13,7 @@ title: Find-PlaywrightPageElement
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Finds a Playwright page element using various strategies such as alt text, label, role, test ID, text, title, or selector.
 
 ## SYNTAX
 
@@ -67,19 +67,31 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Find-PlaywrightPageElement` to locate elements on a Playwright page using different strategies. You can search by alt text, label, role, test ID, text, title, or CSS selector. Returns a Playwright locator (`ILocator`) for further actions.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Find a button by its label:
+
+```powershell
+$locator = Find-PlaywrightPageElement -Label "Submit" -Page $page
+$locator.ClickAsync()
+```
+
+Find an element by CSS selector:
+
+```powershell
+$locator = Find-PlaywrightPageElement -Selector "#main-content" -Page $page
+```
 
 ## PARAMETERS
 
 ### -AltText
 
-{{ Fill AltText Description }}
+Finds an element by its alt text attribute.
 
 ```yaml
 Type: System.String
@@ -100,7 +112,7 @@ HelpMessage: ''
 
 ### -Label
 
-{{ Fill Label Description }}
+Finds an element by its label text.
 
 ```yaml
 Type: System.String
@@ -121,7 +133,7 @@ HelpMessage: ''
 
 ### -LocatorOptions
 
-{{ Fill LocatorOptions Description }}
+Additional options for locating elements by selector.
 
 ```yaml
 Type: Microsoft.Playwright.PageLocatorOptions
@@ -142,7 +154,7 @@ HelpMessage: ''
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to search for the element. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -163,7 +175,7 @@ HelpMessage: ''
 
 ### -Role
 
-{{ Fill Role Description }}
+Finds an element by its ARIA role.
 
 ```yaml
 Type: System.String
@@ -184,7 +196,7 @@ HelpMessage: ''
 
 ### -Selector
 
-{{ Fill Selector Description }}
+Finds an element by a CSS selector string.
 
 ```yaml
 Type: System.String
@@ -205,7 +217,7 @@ HelpMessage: ''
 
 ### -TestId
 
-{{ Fill TestId Description }}
+Finds an element by its test ID attribute.
 
 ```yaml
 Type: System.String
@@ -226,7 +238,7 @@ HelpMessage: ''
 
 ### -Text
 
-{{ Fill Text Description }}
+Finds an element by its text content.
 
 ```yaml
 Type: System.String
@@ -247,7 +259,7 @@ HelpMessage: ''
 
 ### -Title
 
-{{ Fill Title Description }}
+Finds an element by its title attribute.
 
 ```yaml
 Type: System.String
@@ -277,19 +289,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### Microsoft.Playwright.ILocator
 
-{{ Fill in the Description }}
+Returns a Playwright locator (`ILocator`) for the found element.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for flexible element location in automated UI tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.ILocator](https://playwright.dev/dotnet/docs/api/class-locator)
+- [Playwright Documentation](https://playwright.dev/)
 

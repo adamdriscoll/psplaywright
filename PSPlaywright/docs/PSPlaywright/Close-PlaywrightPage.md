@@ -13,7 +13,7 @@ title: Close-PlaywrightPage
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Closes a Playwright page, releasing resources and ending the browser tab or window.
 
 ## SYNTAX
 
@@ -30,19 +30,24 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+Use `Close-PlaywrightPage` to close a Playwright page (tab or window) in the browser. This command is useful for cleaning up after tests or when you need to programmatically close a page.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+
+Close the current Playwright page:
+
+```powershell
+Close-PlaywrightPage -Page $page
+```
 
 ## PARAMETERS
 
 ### -Page
 
-{{ Fill Page Description }}
+Specifies the Playwright page (`IPage`) to close. If not provided, the current page context is used.
 
 ```yaml
 Type: Microsoft.Playwright.IPage
@@ -72,19 +77,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Playwright.IPage
 
-{{ Fill in the Description }}
+Accepts a Playwright `IPage` object as input.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+Returns the result of the page close operation. Typically, no output unless an error occurs.
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This command is useful for cleaning up browser resources and ending sessions in automated tests.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+
+See also:
+
+- [Microsoft.Playwright.IPage.CloseAsync](https://playwright.dev/dotnet/docs/api/class-page#pageclose)
+- [Playwright Documentation](https://playwright.dev/)
 
