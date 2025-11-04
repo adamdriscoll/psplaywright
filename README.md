@@ -14,53 +14,51 @@ Microsoft Playwright is a Node.js library for browser automation. It supports Ch
 
 ### Browser Commands
 
-- `Start-PlaywrightBrowser` - Start a new browser instance
-- `Stop-PlaywrightBrowser` - Stop the browser instance
-- `Enter-PlaywrightBrowser` - Enter a browser context
-- `Exit-PlaywrightBrowser` - Exit the browser context
-- `Open-PlaywrightPage` - Open a new page in the browser
+- [`Start-PlaywrightBrowser`](PSPlaywright/docs/PSPlaywright/Start-PlaywrightBrowser.md) - Start a new browser instance
+- [`Stop-PlaywrightBrowser`](PSPlaywright/docs/PSPlaywright/Stop-PlaywrightBrowser.md) - Stop the browser instance
+- [`Enter-PlaywrightBrowser`](PSPlaywright/docs/PSPlaywright/Enter-PlaywrightBrowser.md) - Enter a browser context
+- [`Exit-PlaywrightBrowser`](PSPlaywright/docs/PSPlaywright/Exit-PlaywrightBrowser.md) - Exit the browser context
+- [`Open-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Open-PlaywrightPage.md) - Open a new page in the browser
 
 ### Page Commands
 
 The following Page cmdlets are available:
 
-- `Add-PlaywrightPageInitScript` - Add an initialization script to the page
-- `Add-PlaywrightPageLocatorHandler` - Add a locator handler to the page
-- `Set-PlaywrightPageToFront` - Bring the page to the front
-- `Close-PlaywrightPage` - Close the current page
-- `Get-PlaywrightPageContent` - Get the content of the page
-- `Set-PlaywrightPageDragAndDrop` - Perform drag and drop on the page
-- `Set-PlaywrightPageMedia` - Emulate media features on the page
-- `Enter-PlaywrightPage` - Enter the page context
-- `Get-PlaywrightPageJavascriptHandle` - Evaluate JavaScript and get a handle
-- `Exit-PlaywrightPage` - Exit the page context
-- `Get-PlaywrightPageLocator` - Get a locator from the page
-- `Open-PlaywrightPageUrl` - Navigate to a URL
-- `Invoke-PlaywrightPageJavascript` - Invoke JavaScript on the page
-- `Invoke-PageKeyboard` - Send keyboard input to the page
-- `Get-PlaywrightPageOpener` - Get the opener of the page
-- `Invoke-PlaywrightPageNavigation` - Handle page navigation
-- `Suspend-PlaywrightPage` - Pause the page
-- `Get-PlaywrightPagePdf` - Generate a PDF of the page
-- `Reset-PlaywrightPage` - Reload the current page
-- `Remove-PlaywrightPageLocatorHandler` - Remove a locator handler from the page
-- `Invoke-PlaywrightPageGarageCollection` - Request garbage collection on the page
-- `Invoke-PlaywrightPageRequest` - Route requests from a HAR file
-- `Register-PlaywrightPageRouteHandler` - Route network requests on the page
-- `Invoke-PlaywrightPageRunAndWaitForEvent` - Run and wait for a page event
-- `Get-PlaywrightPageScreenshot` - Take a screenshot of the page
-- `Set-PlaywrightPageContent` - Set the HTML content of the page
-- `Set-PlaywrightPageViewportSize` - Set the viewport size of the page
-- `Get-PlaywrightPageTitle` - Get the title of the page
-- `Unregister-PlaywrightPageRoute` - Remove all routes from the page
-- `Wait-PlaywrightPageEvent` - Wait for a page event
+- [`Add-PlaywrightPageInitScript`](PSPlaywright/docs/PSPlaywright/Add-PlaywrightPageInitScript.md) - Add an initialization script to the page
+- [`Add-PlaywrightPageLocatorHandler`](PSPlaywright/docs/PSPlaywright/Add-PlaywrightPageLocatorHandler.md) - Add a locator handler to the page
+- [`Set-PlaywrightPageToFront`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightPageToFront.md) - Bring the page to the front
+- [`Close-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Close-PlaywrightPage.md) - Close the current page
+- [`Get-PlaywrightPageContent`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPageContent.md) - Get the content of the page
+- [`Set-PlaywrightPageDragAndDrop`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightPageDragAndDrop.md) - Perform drag and drop on the page
+- [`Set-PlaywrightPageMedia`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightPageMedia.md) - Emulate media features on the page
+- [`Enter-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Enter-PlaywrightPage.md) - Enter the page context
+- [`Get-PlaywrightPageJavascriptHandle`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPageJavascriptHandle.md) - Evaluate JavaScript and get a handle
+- [`Exit-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Exit-PlaywrightPage.md) - Exit the page context
+- [`Find-PlaywrightPageElement`](PSPlaywright/docs/PSPlaywright/Find-PlaywrightPageElement.md) - Find an element on the page
+- [`Open-PlaywrightPageUrl`](PSPlaywright/docs/PSPlaywright/Open-PlaywrightPageUrl.md) - Navigate to a URL
+- [`Invoke-PlaywrightPageJavascript`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightPageJavascript.md) - Invoke JavaScript on the page
+- [`Invoke-PlaywrightPageKeyboard`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightPageKeyboard.md) - Send keyboard input to the page
+- [`Invoke-PlaywrightPageMouse`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightPageMouse.md) - Send mouse input to the page
+- [`Get-PlaywrightPageOpener`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPageOpener.md) - Get the opener of the page
+- [`Invoke-PlaywrightPageNavigation`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightPageNavigation.md) - Handle page navigation
+- [`Suspend-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Suspend-PlaywrightPage.md) - Pause the page
+- [`Get-PlaywrightPagePdf`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPagePdf.md) - Generate a PDF of the page
+- [`Reset-PlaywrightPage`](PSPlaywright/docs/PSPlaywright/Reset-PlaywrightPage.md) - Reload the current page
+- [`Remove-PlaywrightPageLocatorHandler`](PSPlaywright/docs/PSPlaywright/Remove-PlaywrightPageLocatorHandler.md) - Remove a locator handler from the page
+- [`Invoke-PlaywrightPageGarageCollection`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightPageGarageCollection.md) - Request garbage collection on the page
+- [`Get-PlaywrightPageScreenshot`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPageScreenshot.md) - Take a screenshot of the page
+- [`Set-PlaywrightPageContent`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightPageContent.md) - Set the HTML content of the page
+- [`Set-PlaywrightPageViewportSize`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightPageViewportSize.md) - Set the viewport size of the page
+- [`Get-PlaywrightPageTitle`](PSPlaywright/docs/PSPlaywright/Get-PlaywrightPageTitle.md) - Get the title of the page
+- [`Wait-PlaywrightPageEvent`](PSPlaywright/docs/PSPlaywright/Wait-PlaywrightPageEvent.md) - Wait for a page event
 
 ### Locator Commands
 
-- `Invoke-PlaywrightLocatorClick` - Click an element
-- `Set-PlaywrightLocatorInput` - Set input value for an element
-- `Set-PlaywrightLocatorSelect` - Select an option in a dropdown
-- `Get-PlaywrightLocatorInfo` - Get information about a locator
+- [`Assert-PlaywrightLocator`](PSPlaywright/docs/PSPlaywright/Assert-PlaywrightLocator.md) - Assert conditions on a locator
+- [`Invoke-PlaywrightLocatorAdvanced`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightLocatorAdvanced.md) - Perform advanced actions on a locator
+- [`Invoke-PlaywrightLocatorClick`](PSPlaywright/docs/PSPlaywright/Invoke-PlaywrightLocatorClick.md) - Click an element
+- [`Set-PlaywrightLocatorInput`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightLocatorInput.md) - Set input value for an element
+- [`Set-PlaywrightLocatorSelect`](PSPlaywright/docs/PSPlaywright/Set-PlaywrightLocatorSelect.md) - Select an option in a dropdown
 
 
 
