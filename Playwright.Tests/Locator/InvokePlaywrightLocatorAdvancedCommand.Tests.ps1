@@ -17,7 +17,7 @@ Describe 'Invoke-PlaywrightLocatorAdvanced' {
             $pageUrl = Get-TestHtmlPageUrl -FileName $TestPagePath
             $page = Open-PlaywrightPage -Browser $script:browser -Url $pageUrl
             $locator = $page.Locator('#target')
-            $screenshotPath = Join-Path $env:TEMP 'locator-screenshot.png'
+            $screenshotPath = Join-Path ([System.IO.Path]::GetTempPath()) 'locator-screenshot.png'
             
             $bytes = Invoke-PlaywrightLocatorAdvanced -Locator $locator -Screenshot -Path $screenshotPath
             Test-Path $screenshotPath | Should -Be $true

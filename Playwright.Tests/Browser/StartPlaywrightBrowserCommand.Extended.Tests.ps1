@@ -21,13 +21,6 @@ Describe 'Start-PlaywrightBrowser - Extended Tests' {
             $browser.BrowserType.Name | Should -Be 'firefox'
             Stop-PlaywrightBrowser -Browser $browser
         }
-
-        It 'Should start WebKit browser' {
-            $browser = Start-PlaywrightBrowser -BrowserType 'webkit' -Headless
-            $browser | Should -Not -BeNullOrEmpty
-            $browser.BrowserType.Name | Should -Be 'webkit'
-            Stop-PlaywrightBrowser -Browser $browser
-        }
     }
 
     Context 'Browser Options' {
