@@ -84,55 +84,387 @@ This will download and install Chromium, Firefox, and WebKit browsers for Playwr
 
 ## Examples
 
-### Start a Browser and Open a Page
+### Getting Started
+
+#### Basic Browser Setup
+
+Start a browser session and navigate to a webpage:
 
 ```powershell
+# Start Playwright and launch a Chromium browser in headless mode
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
+
+# Open a new page and navigate to a URL
+Open-PlaywrightPage -Url "https://playwright.dev/"
+
+# Get the page title
+$title = Get-PlaywrightPageTitle
+Write-Host "Page title: $title"
+
+# Clean up
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+#### Interactive Browser Session
+
+Launch a visible browser for debugging and manual interaction:
+
+```powershell
+# Start browser with visible window (non-headless)
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+
+# Open a page and pause for manual inspection
+Open-PlaywrightPage -Url "https://example.com"
+Suspend-PlaywrightPage  # Opens Playwright Inspector for debugging
+
+# Continue automation after inspection
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+### Web Navigation & Content
+
+#### Navigate and Interact with Pages
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
+
+# Open a page
+Open-PlaywrightPage -Url "https://www.bing.com"
+
+# Get page content
+$content = Get-PlaywrightPageContent
+Write-Host "Page HTML length: $($content.Length) characters"
+
+# Take a screenshot
+Get-PlaywrightPageScreenshot -Path ".\bing-homepage.png" -FullPage
+
+# Navigate to another page
+Open-PlaywrightPageUrl -Url "https://github.com"
+
+# Go back
+Invoke-PlaywrightPageNavigation -Action GoBack
+
+# Reload the page
+Reset-PlaywrightPage
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+#### Set Custom Content
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+
+Open-PlaywrightPage -Url "about:blank"
+
+# Set custom HTML content
+$html = @"
+<!DOCTYPE html>
+<html>
+<head><title>Test Page</title></head>
+<body>
+    <h1>Hello from PowerShell!</h1>
+    <button id="myButton">Click Me</button>
+</body>
+</html>
+"@
+
+Set-PlaywrightPageContent -Html $html
+
+# Take a screenshot of custom content
+Get-PlaywrightPageScreenshot -Path ".\custom-page.png"
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+### Finding & Interacting with Elements
+
+#### Find Elements Using Different Selectors
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://github.com/login"
+
+# Find by role (accessibility)
+$loginButton = Find-PlaywrightPageElement -Role "button" -Name "Sign in"
+
+# Find by label (form fields)
+$usernameField = Find-PlaywrightPageElement -Label "Username or email address"
+
+# Find by placeholder text
+$searchBox = Find-PlaywrightPageElement -Placeholder "Search GitHub"
+
+# Find by text content
+$linkElement = Find-PlaywrightPageElement -Text "Create an account"
+
+# Find by alt text (images)
+$logo = Find-PlaywrightPageElement -AltText "GitHub"
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+#### Click Elements
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com"
+
+# Find and click a button
+$button = Find-PlaywrightPageElement -Role "button" -Name "Submit"
+Invoke-PlaywrightLocatorClick -Locator $button
+
+# Click with options (double-click, right-click, etc.)
+$element = Find-PlaywrightPageElement -Role "link" -Name "More info"
+Invoke-PlaywrightLocatorClick -Locator $element -ClickCount 2  # Double-click
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+### Form Automation
+
+#### Fill Out and Submit a Form
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com/contact"
+
+# Fill text inputs
+$nameField = Find-PlaywrightPageElement -Label "Name"
+Set-PlaywrightLocatorInput -Locator $nameField -Value "John Doe"
+
+$emailField = Find-PlaywrightPageElement -Label "Email"
+Set-PlaywrightLocatorInput -Locator $emailField -Value "john@example.com"
+
+$messageField = Find-PlaywrightPageElement -Label "Message"
+Set-PlaywrightLocatorInput -Locator $messageField -Value "This is a test message from PSPlaywright!"
+
+# Select from dropdown
+$countryDropdown = Find-PlaywrightPageElement -Label "Country"
+Set-PlaywrightLocatorSelect -Locator $countryDropdown -Value "USA"
+
+# Submit the form
+$submitButton = Find-PlaywrightPageElement -Role "button" -Name "Submit"
+Invoke-PlaywrightLocatorClick -Locator $submitButton
+
+# Wait for navigation or success message
+Start-Sleep -Seconds 2
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+### Assertions & Testing
+
+#### Verify Element States
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com"
+
+# Assert element is visible
+$header = Find-PlaywrightPageElement -Role "heading" -Name "Example Domain"
+Assert-PlaywrightLocator -Locator $header -IsVisible
+
+# Assert element contains text
+$paragraph = Find-PlaywrightPageElement -Role "paragraph"
+Assert-PlaywrightLocator -Locator $paragraph -ContainsText "This domain is for use"
+
+# Assert element is enabled
+$button = Find-PlaywrightPageElement -Role "button"
+Assert-PlaywrightLocator -Locator $button -IsEnabled
+
+# Assert element count
+$links = Find-PlaywrightPageElement -Role "link"
+Assert-PlaywrightLocator -Locator $links -Count 1
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+### Advanced Scenarios
+
+#### Keyboard & Mouse Interactions
+
+```powershell
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://www.google.com"
+
+# Type text using keyboard
+Invoke-PlaywrightPageKeyboard -Action Type -Text "PowerShell automation"
+
+# Press specific keys
+Invoke-PlaywrightPageKeyboard -Action Press -Key "Enter"
+
+# Use keyboard shortcuts
+Invoke-PlaywrightPageKeyboard -Action Press -Key "Control+A"  # Select all
+
+# Mouse interactions
+Invoke-PlaywrightPageMouse -Action Click -X 100 -Y 200
+Invoke-PlaywrightPageMouse -Action Move -X 300 -Y 400
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+#### Generate PDF from Webpage
+
+```powershell
+Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
 Open-PlaywrightPage -Url "https://playwright.dev/"
+
+# Generate PDF with custom options
+Get-PlaywrightPagePdf -Path ".\playwright-docs.pdf" -Format "A4" -PrintBackground
+
+Exit-PlaywrightBrowser
+Stop-Playwright
 ```
 
-### Find an Element on a Page
+#### Execute JavaScript
 
 ```powershell
-$element = Find-PlaywrightPageElement -AltText "Logo" -Page $page
-$element = Find-PlaywrightPageElement -Label "Username" -Page $page
-$element = Find-PlaywrightPageElement -Role "button" -Page $page
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com"
+
+# Execute JavaScript on the page
+$result = Invoke-PlaywrightPageJavascript -Script "return document.title;"
+Write-Host "Page title from JS: $result"
+
+# Execute more complex JavaScript
+$links = Invoke-PlaywrightPageJavascript -Script @"
+    return Array.from(document.querySelectorAll('a')).map(a => a.href);
+"@
+Write-Host "Found $($links.Count) links"
+
+Exit-PlaywrightBrowser
+Stop-Playwright
 ```
 
-### Get Locator Information
+#### Viewport & Media Emulation
 
 ```powershell
-$locator = $page.Locator('#myElement')
-$info = Get-PlaywrightLocatorInfo -Locator $locator
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com"
+
+# Set viewport size (mobile device simulation)
+Set-PlaywrightPageViewportSize -Width 375 -Height 667
+
+# Emulate media features
+Set-PlaywrightPageMedia -ColorScheme "dark" -ReducedMotion "reduce"
+
+# Take screenshot with mobile viewport
+Get-PlaywrightPageScreenshot -Path ".\mobile-view.png"
+
+Exit-PlaywrightBrowser
+Stop-Playwright
 ```
 
-### Click a Button
+#### Wait for Events
 
 ```powershell
-$button = Find-PlaywrightPageElement -Role "button" -Page $page
-Invoke-PlaywrightLocatorClick -Locator $button
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Enter
+Open-PlaywrightPage -Url "https://example.com"
 
-$button = Find-PlaywrightPageElement -Role "button" -Page $page
-Invoke-PlaywrightLocatorClick -Locator $button
+# Click a link and wait for navigation
+$link = Find-PlaywrightPageElement -Role "link"
+Invoke-PlaywrightLocatorClick -Locator $link
+
+# Wait for a specific event
+Wait-PlaywrightPageEvent -Event "load" -Timeout 30000
+
+Exit-PlaywrightBrowser
+Stop-Playwright
 ```
 
-### Common Scenarios
+### Multi-Browser Testing
 
-- **Assert Element Visibility**
+#### Test Across Different Browsers
 
-	```powershell
-	$locator = $page.Locator('#main')
-	Assert-PlaywrightLocator -Locator $locator -IsVisible
-	```
+```powershell
+Start-Playwright
 
-- **Get Page Title**
-	```powershell
-	$title = Get-PlaywrightPageTitle -Page $page
-	```
+$browsers = @('Chromium', 'Firefox', 'Webkit')
+$results = @()
 
-- **Take a Screenshot**
-	```powershell
-	Get-PlaywrightPageScreenshot -Page $page -Path './screenshot.png'
-	```
+foreach ($browser in $browsers) {
+    Write-Host "Testing with $browser..."
+    
+    Start-PlaywrightBrowser -BrowserType $browser -Headless -Enter
+    Open-PlaywrightPage -Url "https://example.com"
+    
+    # Perform tests
+    $title = Get-PlaywrightPageTitle
+    $screenshot = ".\test-$browser.png"
+    Get-PlaywrightPageScreenshot -Path $screenshot
+    
+    $results += [PSCustomObject]@{
+        Browser = $browser
+        Title = $title
+        Screenshot = $screenshot
+    }
+    
+    Exit-PlaywrightBrowser
+}
 
-For more advanced usage and additional examples, see the documentation and upcoming examples section.
+# Display results
+$results | Format-Table -AutoSize
+
+Stop-Playwright
+```
+
+### Complete Example: Web Scraping
+
+```powershell
+# Scrape article titles from a news website
+Start-Playwright
+Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
+
+Open-PlaywrightPage -Url "https://news.ycombinator.com"
+
+# Wait for content to load
+Start-Sleep -Seconds 2
+
+# Execute JavaScript to extract article titles
+$titles = Invoke-PlaywrightPageJavascript -Script @"
+    return Array.from(document.querySelectorAll('.titleline > a'))
+        .map(a => ({
+            title: a.textContent,
+            url: a.href
+        }))
+        .slice(0, 10);
+"@
+
+# Display results
+Write-Host "Top 10 Articles:`n"
+$titles | ForEach-Object {
+    Write-Host "- $($_.title)"
+    Write-Host "  URL: $($_.url)`n"
+}
+
+Exit-PlaywrightBrowser
+Stop-Playwright
+```
+
+## Additional Resources
+
+For detailed information about each command and its parameters, refer to the command documentation links in the [Commands](#commands) section above.
+
+For more information about Playwright capabilities, visit the [official Playwright documentation](https://playwright.dev/).
