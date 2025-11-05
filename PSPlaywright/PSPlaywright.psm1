@@ -126,17 +126,11 @@ function Install-Playwright {
         return
     }
     
-    # Install Playwright browsers using npx
+    # Install Playwright browsers
     Write-Verbose "Installing Playwright browsers..."
     try {
-        # Use npx to run playwright install command
-        $playwrightInstallCmd = "$PSScriptRoot\playwright.ps1 install"
-        
-        Write-Verbose "Executing: $playwrightInstallCmd"
-        $result = & $playwrightInstallCmd
-        
+        & $PSScriptRoot\playwright.ps1 install
         Write-Verbose "Playwright browsers installed successfully!"
-        Write-Output $result
     }
     catch {
         Write-Error "Failed to install Playwright browsers: $_"
