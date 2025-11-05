@@ -29,5 +29,5 @@ jobs:
       shell: pwsh
       run: |
         Import-Module ./PSPlaywright/bin/Release/netstandard2.0/publish/PSPlaywright.psd1
-        Install-Playwright
+        Install-Playwright -SkipNodeInstall
         Invoke-Pester -Path ./Playwright.Tests -Output Detailed
