@@ -96,7 +96,8 @@ Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
 
 # Open a new page and navigate to a URL
-Open-PlaywrightPage -Url "https://playwright.dev/"
+$page = Open-PlaywrightPage -Url "https://playwright.dev/"
+$page | Enter-PlaywrightPage
 
 # Get the page title
 $title = Get-PlaywrightPageTitle
@@ -117,7 +118,8 @@ Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
 
 # Open a page and pause for manual inspection
-Open-PlaywrightPage -Url "https://example.com"
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 Suspend-PlaywrightPage  # Opens Playwright Inspector for debugging
 
 # Continue automation after inspection
@@ -134,7 +136,8 @@ Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
 
 # Open a page
-Open-PlaywrightPage -Url "https://www.bing.com"
+$page = Open-PlaywrightPage -Url "https://www.bing.com"
+$page | Enter-PlaywrightPage
 
 # Get page content
 $content = Get-PlaywrightPageContent
@@ -162,7 +165,8 @@ Stop-Playwright
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
 
-Open-PlaywrightPage -Url "about:blank"
+$page = Open-PlaywrightPage -Url "about:blank"
+$page | Enter-PlaywrightPage
 
 # Set custom HTML content
 $html = @"
@@ -192,7 +196,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://github.com/login"
+$page = Open-PlaywrightPage -Url "https://github.com/login"
+$page | Enter-PlaywrightPage
 
 # Find by role (accessibility)
 $loginButton = Find-PlaywrightPageElement -Role "button" -Name "Sign in"
@@ -218,7 +223,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com"
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 
 # Find and click a button
 $button = Find-PlaywrightPageElement -Role "button" -Name "Submit"
@@ -239,7 +245,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com/contact"
+$page = Open-PlaywrightPage -Url "https://example.com/contact"
+$page | Enter-PlaywrightPage
 
 # Fill text inputs
 $nameField = Find-PlaywrightPageElement -Label "Name"
@@ -273,7 +280,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com"
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 
 # Assert element is visible
 $header = Find-PlaywrightPageElement -Role "heading" -Name "Example Domain"
@@ -302,7 +310,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://www.google.com"
+$page = Open-PlaywrightPage -Url "https://www.google.com"
+$page | Enter-PlaywrightPage
 
 # Type text using keyboard
 Invoke-PlaywrightPageKeyboard -Action Type -Text "PowerShell automation"
@@ -326,7 +335,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://playwright.dev/"
+$page = Open-PlaywrightPage -Url "https://playwright.dev/"
+$page | Enter-PlaywrightPage
 
 # Generate PDF with custom options
 Get-PlaywrightPagePdf -Path ".\playwright-docs.pdf" -Format "A4" -PrintBackground
@@ -340,7 +350,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com"
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 
 # Execute JavaScript on the page
 $result = Invoke-PlaywrightPageJavascript -Script "return document.title;"
@@ -361,7 +372,8 @@ Stop-Playwright
 ```powershell
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com"
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 
 # Set viewport size (mobile device simulation)
 Set-PlaywrightPageViewportSize -Width 375 -Height 667
@@ -380,15 +392,16 @@ Stop-Playwright
 
 ```powershell
 Start-Playwright
-Start-PlaywrightBrowser -BrowserType Chromium -Enter
-Open-PlaywrightPage -Url "https://example.com"
+$browser = Start-PlaywrightBrowser -BrowserType Chromium -Enter
+$page = Open-PlaywrightPage -Url "https://example.com"
+$page | Enter-PlaywrightPage
 
 # Click a link and wait for navigation
 $link = Find-PlaywrightPageElement -Role "link"
 Invoke-PlaywrightLocatorClick -Locator $link
 
-# Wait for a specific event
-Wait-PlaywrightPageEvent -Event "load" -Timeout 30000
+# Wait for the page to reach the load state
+$null = Wait-PlaywrightPageEvent -EventType 'LoadState' -State ([Microsoft.Playwright.LoadState]::Load)
 
 Exit-PlaywrightBrowser
 Stop-Playwright
@@ -408,7 +421,8 @@ foreach ($browser in $browsers) {
     Write-Host "Testing with $browser..."
     
     Start-PlaywrightBrowser -BrowserType $browser -Headless -Enter
-    Open-PlaywrightPage -Url "https://example.com"
+    $page = Open-PlaywrightPage -Url "https://example.com"
+    $page | Enter-PlaywrightPage
     
     # Perform tests
     $title = Get-PlaywrightPageTitle
@@ -437,7 +451,8 @@ Stop-Playwright
 Start-Playwright
 Start-PlaywrightBrowser -BrowserType Chromium -Headless -Enter
 
-Open-PlaywrightPage -Url "https://news.ycombinator.com"
+$page = Open-PlaywrightPage -Url "https://news.ycombinator.com"
+$page | Enter-PlaywrightPage
 
 # Wait for content to load
 Start-Sleep -Seconds 2
